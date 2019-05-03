@@ -1,0 +1,110 @@
+﻿*{
+    margin:0;
+    padding:0;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    font-size: 14px;
+    font-weight: 400;
+    background: #f2f2f2
+}
+
+.header {
+    height: 400px;
+    background:url(../img/header_bg.jpg) ;
+    background-size:cover;
+    width:100%;
+    display: block;
+}
+
+.header .header-content{
+    margin:0 150px 0 150px;
+    height:100%;
+}
+
+.navbar-wrap {
+    padding-top: 30px;
+}
+
+.funbo{
+    text-align:center;
+}
+
+.funbo a {
+    text-decoration: none;
+    font-size: 20px;
+    padding:0 40px 0 40px
+}
+
+.area-avatar {
+    border-radius: 10px;
+    margin-top: 90px;
+    width: 370px;
+    height: 225px;
+    background: #F9F2F2;
+    float: right;
+    text-align: center
+}
+
+.avatar{
+    width:70px;
+    height:70px;
+    margin:46px 150px 18px 150px;
+}
+
+.loginbt {
+    background: #ffbb29;
+    padding: 12px
+}
+
+.area-content {
+    margin: 0 150px 0 150px;
+}
+
+.ctrl-warp {
+    font-size: 20px;
+    margin-top: 30px;
+    height: 110px;
+    border-radius: 10px;
+    text-align: center;
+    background:#ffffff
+}
+
+.search-bar {
+    margin-top: 30px;
+    border: 0.5px solid #a9a9a9;
+}
+
+.search-bar input,
+.search-bar button {
+    display: block;
+    float: left;
+    padding: 10px;
+    outline: 0;
+    border-radius:6px;
+}
+
+.search-bar input {
+    width: 80%;
+}
+
+.search-bar button {
+    width: 20%;
+    background: #ffbb29;
+    color: #fff;
+}
+
+.category {
+    height: 60px;
+    margin: 15px 0 15px 0;
+    border-radius: 5px;
+    background: #ffbb29;
+    font-size:20px;
+    padding:13px 0 10px 0;
+}
+
+.category a {
+    padding: 0 13px 0 13px ;
+    text-decoration:none
+}
