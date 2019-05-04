@@ -151,6 +151,7 @@
     <Content Include="Src\css\bootstrap.min.css" />
     <Content Include="Src\img\add.png" />
     <Content Include="Src\img\default_avatar.png" />
+    <Content Include="Src\img\ex1.jpg" />
     <Content Include="Src\img\header_bg.jpg" />
     <Content Include="Src\css\mian.css" />
     <Content Include="Web.config" />
