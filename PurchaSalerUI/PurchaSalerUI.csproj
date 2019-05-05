@@ -152,8 +152,8 @@
     <Content Include="Src\img\add.png" />
     <Content Include="Src\img\default_avatar.png" />
     <Content Include="Src\img\ex1.jpg" />
-    <Content Include="Src\img\header_bg.jpg" />
     <Content Include="Src\css\mian.css" />
+    <Content Include="Src\img\bg_header.png" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>

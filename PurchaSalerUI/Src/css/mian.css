@@ -16,15 +16,17 @@ body {
 
 .header {
     height: 400px;
-    background:url(../img/header_bg.jpg) ;
-    background-size:cover;
-    width:100%;
+    background-color: #ffdc61;
+    width: 100%;
     display: block;
 }
 
-.header .header-content{
-    margin:0 150px 0 150px;
-    height:100%;
+.header .header-content {
+    margin: 0 150px 0 150px;
+    background: url(../img/bg_header.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+    height: 100%;
 }
 
 .navbar-wrap {
@@ -103,9 +105,9 @@ body {
     height: 60px;
     margin: 15px 0 15px 0;
     border-radius: 5px;
-    background: #ffbb29;
-    font-size:20px;
-    padding:13px 0 10px 0;
+    background: #ffdc61;
+    font-size: 20px;
+    padding: 13px 0 10px 0;
 }
 
 .category a {
