@@ -26,10 +26,5 @@ namespace PurchaSalerUI.Controllers
 
             return View();
         }
-
-        public ActionResult AddGoods()
-        {
-            return View();
-        }
     }
 }
