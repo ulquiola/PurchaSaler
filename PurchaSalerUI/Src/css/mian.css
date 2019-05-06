@@ -116,13 +116,19 @@ body {
 }
 
 .goods{
-    margin-left:10px;
+
 }
 
 .goods .card {
     width: 200px;
     height: 330px;
-    margin: 0 10px 10px 0;        
+    margin-left:8px;
+    margin-bottom:10px;
+}
+
+.area-content .row {
+    margin-left: 0;
+    margin-right: 0
 }
 
 .card img {
