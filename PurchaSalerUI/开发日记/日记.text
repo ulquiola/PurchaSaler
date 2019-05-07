@@ -1,0 +1,54 @@
+﻿1.关于验证码的调用
+	<img class="vcimg" id="img" src="@Url.Action("GetValidateCode","Account")" onclick="this.src=this.src+'?'+(new Date()).getTime()">
+                            <a onclick="document.getElementById('img').onclick()">换一张?</a>
+
+2.css中 <img>的src属性:  ./images/bg.png与background-image：url( ../images/bg.png  )的区别
+	在img的src中，我们是以当前html网页做相对文件，来设置引入图片的路径。
+	在外部样式css文件中，设置某个元素的background-image的url()；应当是以你当前的css文件所在路径做为相对路径找起。
+
+3.view生成出错解决
+	1.将model层的App.Config里的 
+	<connectionStrings>
+		<add name="UserInfoEntities" connectionString="metadata=res://*/UserInfoModel.csdl|res://*/UserInfoModel.ssdl|res://*/UserInfoModel.msl;provider=System.Data.SqlClient;provider connection string=&quot;data source=.;initial catalog=TradingMall;integrated security=True;MultipleActiveResultSets=True;App=EntityFramework&quot;" providerName="System.Data.EntityClient" />
+	</connectionStrings>
+	复制到WebUI层的Web.config
+	注意：如果还是出错的话，可能要将<connectionStrings>写到<configSections>后面
+
+4.bootstrap栅格五等分
+	<style type="text/css">
+				.col-xs-1-5,
+				.col-sm-1-5,
+				.col-md-1-5,
+				.col-lg-1-5 {
+					position: relative;
+					min-height: 1px;
+					padding-right: 10px;
+					padding-left: 10px;
+				}
+            
+				.col-xs-1-5 {
+					width: 20%;
+					float: left;
+				}
+            
+				@media (min-width: 768px) {
+					.col-sm-1-5 {
+						width: 20%;
+						float: left;
+					}
+				}
+            
+				@media (min-width: 992px) {
+					.col-md-1-5 {
+						width: 20%;
+						float: left;
+					}
+				}
+            
+				@media (min-width: 1200px) {
+					.col-lg-1-5 {
+						width: 20%;
+						float: left;
+					}
+				}
+			</style>
