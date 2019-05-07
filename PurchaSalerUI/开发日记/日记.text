@@ -52,3 +52,14 @@
 					}
 				}
 			</style>
+
+5.@RenderSection("head")的用法
+	布局页在<head></head>标签内加上@RenderSection("head")，
+	子页上加上@Section head{
+		<link>
+		<script>
+	}
+	如果是@RenderSection("head"，true)
+	则子页上必须要有@Section head{
+	}否则会页面加载失败；
+	一般是@RenderSection("head"，false)
