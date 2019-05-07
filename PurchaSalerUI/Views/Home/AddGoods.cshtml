@@ -2,36 +2,9 @@
 @{
     ViewBag.Title = "AddGoods";
 }
-<style>
-    .Addform{
-        margin:150px;
-        text-align:center
-    }
-
-    .Addform .title input{
-        width:60%;
-        height:50px;
-        margin:20px;
-        border-radius:5px;
-    }
-    .Addform .describe input{
-        width:60%;
-        height:200px;
-        margin-bottom:20px;
-        border-radius:5px;
-    }
-
-    .photo img{
-        width:150px;
-        height:150px;
-        border:1px solid #ffd800
-    }
-
-    .Addform .btn{
-        margin:20px
-    }
-</style>
-
+@section head{
+    <link href="~/Content/css/addGoods.css" rel="stylesheet" />
+}
 
 <form action="/" method="post" class="Addform">
     <h2>发布置闲</h2>
