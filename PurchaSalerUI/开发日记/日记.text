@@ -63,3 +63,10 @@
 	则子页上必须要有@Section head{
 	}否则会页面加载失败；
 	一般是@RenderSection("head"，false)
+
+6.Htmlhelper加属性
+	@Html.PasswordFor(user => user.Password,
+	new { placeholder = "密码" ,@class="form-password form-control",@id="form-password" })
+
+7.出现“未能加载文件或程序集“DAL”或它的某一个的依赖项”错误
+	修改DAL层属性，把生成的输出路径改为UI层的/bin目录下
