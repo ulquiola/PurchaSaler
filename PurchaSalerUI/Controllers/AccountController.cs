@@ -14,5 +14,10 @@ namespace PurchaSalerUI.Controllers
             return View();
         }
 
+        [HttpPost]
+        public ActionResult Login(User us)
+        {
+            return View();
+        }
     }
 }
