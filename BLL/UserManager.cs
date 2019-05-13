@@ -22,6 +22,5 @@ namespace BLL
         {
             return iuser.Login(man);
         }
-
     }
 }

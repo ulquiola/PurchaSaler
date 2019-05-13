@@ -20,10 +20,9 @@ namespace PurchaSalerUI.Controllers
         public ActionResult Login(User man)
         {
             int u = usermanager.Login(man);
-
-            if (u>0)
+            if(u>0)
             {
-                Session["UserID"] = man.UserID;
+                Session["CurrentUser"] = man.UserID;
                 Session["UserName"] = man.UserName;
 
                 return Content("登陆成功！！！");

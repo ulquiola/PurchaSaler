@@ -9,7 +9,7 @@ using Models;
 
 namespace DAL
 {
-    class SqlUser : IUser
+    class SqlUser:IUser
     {
         PurchaSalerEntities db = new PurchaSalerEntities();
         public List<User> SelectUser(string username)
@@ -31,6 +31,5 @@ namespace DAL
             return result;
         }
 
-        
     }
 }
