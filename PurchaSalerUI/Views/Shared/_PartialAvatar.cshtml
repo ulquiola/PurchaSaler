@@ -1,0 +1,15 @@
+﻿@if (Session["UserID"] != null)
+{
+    <div class="area-avatar">
+        <img src="@Session["Avatar"]" class="avatar" />
+    </div>
+}
+else
+{
+    <div class="area-avatar">
+        <img src="~/Content/img/avatar/default_avatar.png" class="avatar" />
+        <div class="loginbt"><a href="/User/Login" style="text-decoration:none">请登录</a></div>
+        <div><a href="#" style="text-decoration:none">免费注册</a></div>
+    </div>
+}
+
