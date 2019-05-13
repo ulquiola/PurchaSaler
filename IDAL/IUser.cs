@@ -9,6 +9,7 @@ namespace IDAL
 {
     public interface IUser
     {
+        User GetUserInfo(string username);
         List<User> SelectUser(string username);
         int Login(User man);
     }

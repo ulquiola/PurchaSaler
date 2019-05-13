@@ -20,13 +20,15 @@ namespace PurchaSalerUI.Controllers
         public ActionResult Login(User man)
         {
             int u = usermanager.Login(man);
+            User uinfo = usermanager.GetUserInfo(man.UserName);
 
             if (u>0)
             {
                 Session["UserID"] = man.UserID;
                 Session["UserName"] = man.UserName;
+                Session["Avatar"] = uinfo.Avatar;
 
-                return Content("登陆成功！！！");
+                return RedirectToAction("Index", "Home");
             }
             else
             {

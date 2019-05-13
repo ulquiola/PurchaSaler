@@ -12,6 +12,14 @@ namespace DAL
     class SqlUser : IUser
     {
         PurchaSalerEntities db = new PurchaSalerEntities();
+
+        public User GetUserInfo(string username)
+        {
+            var userinfo = from u in db.Users
+                       where u.UserName == username
+                       select u;
+            return userinfo.FirstOrDefault();
+        }
         public List<User> SelectUser(string username)
         {
             var users = (

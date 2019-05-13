@@ -13,6 +13,12 @@ namespace BLL
     public class UserManager
     {
         private IUser iuser = DataAccess.CreateUser();
+
+        public User GetUserInfo(string username)
+        {
+            return iuser.GetUserInfo(username);
+        }
+
         public List<User> SelectUser(string username)
         {
             return iuser.SelectUser(username);
