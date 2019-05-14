@@ -1,15 +1,39 @@
 ﻿@if (Session["UserID"] != null)
 {
-    <div class="area-avatar">
-        <img src="@Session["Avatar"]" class="avatar" />
-        <div class="loginbt"><a style="text-decoration:none">@Session["UserName"]</a></div>
-        <div><a href="#" style="text-decoration:none">免费注册</a></div>
+    <div class="area-usercard">
+        <div class="logined">
+            <div class="user-info">
+                <img src="@Session["Avatar"]" class="avatar_logined" />
+                <div class="user">爱自己爱生活</div>
+            </div>
+            <div class="opera">
+                <div class="row no-gap img">
+                    <div class="col-lg-3"><img class="item" src="~/Content/img/opera1.png" alt="出售中" /></div>
+                    <div class="col-lg-3"><img class="item" src="~/Content/img/opera2.png" alt="已卖出" /></div>
+                    <div class="col-lg-3"><img class="item" src="~/Content/img/opera3.png" alt="我的关注" /></div>
+                    <div class="col-lg-3"><img class="item" src="~/Content/img/opera4.png" alt="我的收藏" /></div>
+                </div>
+                <div class="row no-gap name">
+                    <div class="col-lg-3">出售中</div>
+                    <div class="col-lg-3">已卖出</div>
+                    <div class="col-lg-3">我的关注</div>
+                    <div class="col-lg-3">我的收藏</div>
+                </div>
+                <div class="row no-gap num">
+                    <div class="col-lg-3">0</div>
+                    <div class="col-lg-3">0</div>
+                    <div class="col-lg-3">0</div>
+                    <div class="col-lg-3">0</div>
+                </div>
+            </div>
+        </div>
+
     </div>
 }
 else
 {
-    <div class="area-avatar">
-        <img src="~/Content/img/avatar/default_avatar.png" class="avatar" />
+    <div class="area-usercard">
+        <img src="~/Content/img/avatar/default_avatar.png" class="avatar_unlogin" />
         <div class="loginbt"><a href="/User/Login" style="text-decoration:none">请登录</a></div>
         <div><a href="#" style="text-decoration:none">免费注册</a></div>
     </div>

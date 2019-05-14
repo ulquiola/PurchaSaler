@@ -133,6 +133,10 @@
     <Content Include="Content\css\login.css" />
     <Content Include="Content\img\acount_bg.jpg" />
     <Content Include="Content\img\avatar\lifa.jpg" />
+    <Content Include="Content\img\opera1.png" />
+    <Content Include="Content\img\opera2.png" />
+    <Content Include="Content\img\opera3.png" />
+    <Content Include="Content\img\opera4.png" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
