@@ -131,6 +131,7 @@
     <Content Include="Content\css\bootstrap.min.css" />
     <Content Include="Content\css\index.css" />
     <Content Include="Content\css\login.css" />
+    <Content Include="Content\css\register.css" />
     <Content Include="Content\img\acount_bg.jpg" />
     <Content Include="Content\img\avatar\lifa.jpg" />
     <Content Include="Content\img\opera1.png" />
@@ -183,6 +184,7 @@
     <Content Include="Views\User\Login.cshtml" />
     <Content Include="Views\Shared\_PartialLogin.cshtml" />
     <Content Include="Views\Shared\_PartialAvatar.cshtml" />
+    <Content Include="Views\User\Register.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -35,5 +35,16 @@ namespace PurchaSalerUI.Controllers
                 return Content("用户名或密码错误！！！");
             }
         }
+
+        public ActionResult Register()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult Register(User man)
+        {
+            return Content("1");
+        }
     }
 }

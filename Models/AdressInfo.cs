@@ -15,7 +15,6 @@ namespace Models
     public partial class AdressInfo
     {
         public int AdressID { get; set; }
-        public Nullable<int> UserID { get; set; }
         public string Adress { get; set; }
         public string Status { get; set; }
     

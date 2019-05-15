@@ -15,7 +15,6 @@ namespace Models
     public partial class ShopCart
     {
         public int UserID { get; set; }
-        public Nullable<int> GoodID { get; set; }
         public Nullable<decimal> Price { get; set; }
         public Nullable<int> Amount { get; set; }
         public Nullable<decimal> Total { get; set; }

@@ -38,11 +38,12 @@
           <Property Name="GoodID" Type="int" Nullable="false" />
           <Property Name="ShopID" Type="int" />
           <Property Name="CategoryID" Type="int" />
-          <Property Name="Quality" Type="varchar" MaxLength="50" />
-          <Property Name="Price" Type="money" />
-          <Property Name="Amount" Type="int" />
+          <Property Name="GoodTitle" Type="varchar" MaxLength="50" />
           <Property Name="GoodPhoto" Type="varchar" MaxLength="50" />
           <Property Name="GoodDescribe" Type="varchar" MaxLength="50" />
+          <Property Name="Amount" Type="int" />
+          <Property Name="Quality" Type="varchar" MaxLength="50" />
+          <Property Name="Price" Type="money" />
         </EntityType>
         <EntityType Name="OrderItems">
           <Key>
@@ -89,7 +90,7 @@
             <PropertyRef Name="UserID" />
           </Key>
           <Property Name="UserID" Type="int" Nullable="false" />
-          <Property Name="ShopID" Type="int" Nullable="false" />
+          <Property Name="ShopID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="ShopName" Type="varchar" MaxLength="50" />
         </EntityType>
         <EntityType Name="sysdiagrams">
@@ -314,7 +315,6 @@
             <PropertyRef Name="AdressID" />
           </Key>
           <Property Name="AdressID" Type="Int32" Nullable="false" />
-          <Property Name="UserID" Type="Int32" />
           <Property Name="Adress" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="Status" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="User" Relationship="Self.FK_AdressInfo_Users" FromRole="AdressInfo" ToRole="Users" />
@@ -332,8 +332,6 @@
             <PropertyRef Name="GoodCommentID" />
           </Key>
           <Property Name="GoodCommentID" Type="Int32" Nullable="false" />
-          <Property Name="UserID" Type="Int32" />
-          <Property Name="GoodID" Type="Int32" />
           <Property Name="Comment" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="PublishTime" Type="DateTime" Precision="3" />
           <NavigationProperty Name="Good" Relationship="Self.FK_GoodComment_Goods" FromRole="GoodComment" ToRole="Goods" />
@@ -345,12 +343,12 @@
           </Key>
           <Property Name="GoodID" Type="Int32" Nullable="false" />
           <Property Name="ShopID" Type="Int32" />
-          <Property Name="CategoryID" Type="Int32" />
-          <Property Name="Quality" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="Price" Type="Decimal" Precision="19" Scale="4" />
-          <Property Name="Amount" Type="Int32" />
+          <Property Name="GoodTitle" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="GoodPhoto" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="GoodDescribe" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Amount" Type="Int32" />
+          <Property Name="Quality" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Price" Type="Decimal" Precision="19" Scale="4" />
           <NavigationProperty Name="Category" Relationship="Self.FK_Goods_Category" FromRole="Goods" ToRole="Category" />
           <NavigationProperty Name="GoodComments" Relationship="Self.FK_GoodComment_Goods" FromRole="Goods" ToRole="GoodComment" />
           <NavigationProperty Name="ShopCarts" Relationship="Self.FK_ShopCarts_Goods" FromRole="Goods" ToRole="ShopCarts" />
@@ -360,7 +358,6 @@
             <PropertyRef Name="OrderItemID" />
           </Key>
           <Property Name="OrderItemID" Type="Int32" Nullable="false" />
-          <Property Name="OrderID" Type="Int32" />
           <Property Name="GoodID" Type="Int32" />
           <Property Name="Price" Type="Decimal" Precision="19" Scale="4" />
           <Property Name="Amount" Type="Int32" />
@@ -372,7 +369,6 @@
             <PropertyRef Name="OrderID" />
           </Key>
           <Property Name="OrderID" Type="Int32" Nullable="false" />
-          <Property Name="UserID" Type="Int32" />
           <Property Name="OrderTime" Type="DateTime" Precision="3" />
           <Property Name="Total" Type="Decimal" Precision="19" Scale="4" />
           <NavigationProperty Name="OrderItems" Relationship="Self.FK_OrderItems_Orders" FromRole="Orders" ToRole="OrderItems" />
@@ -383,7 +379,6 @@
             <PropertyRef Name="ReplyGoodID" />
           </Key>
           <Property Name="ReplyGoodID" Type="Int32" Nullable="false" />
-          <Property Name="UserID" Type="Int32" />
           <Property Name="GoodCommentID" Type="Int32" />
           <Property Name="ReplyContent" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="ReplyTime" Type="DateTime" Precision="3" />
@@ -394,7 +389,6 @@
             <PropertyRef Name="UserID" />
           </Key>
           <Property Name="UserID" Type="Int32" Nullable="false" />
-          <Property Name="GoodID" Type="Int32" />
           <Property Name="Price" Type="Decimal" Precision="19" Scale="4" />
           <Property Name="Amount" Type="Int32" />
           <Property Name="Total" Type="Decimal" Precision="19" Scale="4" />
@@ -406,7 +400,7 @@
             <PropertyRef Name="UserID" />
           </Key>
           <Property Name="UserID" Type="Int32" Nullable="false" />
-          <Property Name="ShopID" Type="Int32" Nullable="false" />
+          <Property Name="ShopID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="ShopName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="User" Relationship="Self.FK_Shops_Users" FromRole="Shops" ToRole="Users" />
         </EntityType>
@@ -442,110 +436,46 @@
             <OnDelete Action="Cascade" />
           </End>
           <End Role="AdressInfo" Type="Self.AdressInfo" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Users">
-              <PropertyRef Name="UserID" />
-            </Principal>
-            <Dependent Role="AdressInfo">
-              <PropertyRef Name="UserID" />
-            </Dependent>
-          </ReferentialConstraint>
         </Association>
         <Association Name="FK_Goods_Category">
           <End Role="Category" Type="Self.Category" Multiplicity="0..1">
             <OnDelete Action="Cascade" />
           </End>
           <End Role="Goods" Type="Self.Good" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Category">
-              <PropertyRef Name="CategoryID" />
-            </Principal>
-            <Dependent Role="Goods">
-              <PropertyRef Name="CategoryID" />
-            </Dependent>
-          </ReferentialConstraint>
         </Association>
         <Association Name="FK_GoodComment_Goods">
           <End Role="Goods" Type="Self.Good" Multiplicity="0..1">
             <OnDelete Action="Cascade" />
           </End>
           <End Role="GoodComment" Type="Self.GoodComment" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Goods">
-              <PropertyRef Name="GoodID" />
-            </Principal>
-            <Dependent Role="GoodComment">
-              <PropertyRef Name="GoodID" />
-            </Dependent>
-          </ReferentialConstraint>
         </Association>
         <Association Name="FK_GoodComment_Users">
           <End Role="Users" Type="Self.User" Multiplicity="0..1">
             <OnDelete Action="Cascade" />
           </End>
           <End Role="GoodComment" Type="Self.GoodComment" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Users">
-              <PropertyRef Name="UserID" />
-            </Principal>
-            <Dependent Role="GoodComment">
-              <PropertyRef Name="UserID" />
-            </Dependent>
-          </ReferentialConstraint>
         </Association>
         <Association Name="FK_ShopCarts_Goods">
           <End Role="Goods" Type="Self.Good" Multiplicity="0..1" />
           <End Role="ShopCarts" Type="Self.ShopCart" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Goods">
-              <PropertyRef Name="GoodID" />
-            </Principal>
-            <Dependent Role="ShopCarts">
-              <PropertyRef Name="GoodID" />
-            </Dependent>
-          </ReferentialConstraint>
         </Association>
         <Association Name="FK_OrderItems_Orders">
           <End Role="Orders" Type="Self.Order" Multiplicity="0..1">
             <OnDelete Action="Cascade" />
           </End>
           <End Role="OrderItems" Type="Self.OrderItem" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Orders">
-              <PropertyRef Name="OrderID" />
-            </Principal>
-            <Dependent Role="OrderItems">
-              <PropertyRef Name="OrderID" />
-            </Dependent>
-          </ReferentialConstraint>
         </Association>
         <Association Name="FK_Orders_Users">
           <End Role="Users" Type="Self.User" Multiplicity="0..1">
             <OnDelete Action="Cascade" />
           </End>
           <End Role="Orders" Type="Self.Order" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Users">
-              <PropertyRef Name="UserID" />
-            </Principal>
-            <Dependent Role="Orders">
-              <PropertyRef Name="UserID" />
-            </Dependent>
-          </ReferentialConstraint>
         </Association>
         <Association Name="FK_ReplyComment_Users">
           <End Role="Users" Type="Self.User" Multiplicity="0..1">
             <OnDelete Action="Cascade" />
           </End>
           <End Role="ReplyComment" Type="Self.ReplyComment" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Users">
-              <PropertyRef Name="UserID" />
-            </Principal>
-            <Dependent Role="ReplyComment">
-              <PropertyRef Name="UserID" />
-            </Dependent>
-          </ReferentialConstraint>
         </Association>
         <Association Name="FK_ShopCarts_Users1">
           <End Role="Users" Type="Self.User" Multiplicity="1">
@@ -638,7 +568,6 @@
             <EntityTypeMapping TypeName="PurchaSalerModel.AdressInfo">
               <MappingFragment StoreEntitySet="AdressInfo">
                 <ScalarProperty Name="AdressID" ColumnName="AdressID" />
-                <ScalarProperty Name="UserID" ColumnName="UserID" />
                 <ScalarProperty Name="Adress" ColumnName="Adress" />
                 <ScalarProperty Name="Status" ColumnName="Status" />
               </MappingFragment>
@@ -656,8 +585,6 @@
             <EntityTypeMapping TypeName="PurchaSalerModel.GoodComment">
               <MappingFragment StoreEntitySet="GoodComment">
                 <ScalarProperty Name="GoodCommentID" ColumnName="GoodCommentID" />
-                <ScalarProperty Name="UserID" ColumnName="UserID" />
-                <ScalarProperty Name="GoodID" ColumnName="GoodID" />
                 <ScalarProperty Name="Comment" ColumnName="Comment" />
                 <ScalarProperty Name="PublishTime" ColumnName="PublishTime" />
               </MappingFragment>
@@ -668,12 +595,12 @@
               <MappingFragment StoreEntitySet="Goods">
                 <ScalarProperty Name="GoodID" ColumnName="GoodID" />
                 <ScalarProperty Name="ShopID" ColumnName="ShopID" />
-                <ScalarProperty Name="CategoryID" ColumnName="CategoryID" />
-                <ScalarProperty Name="Quality" ColumnName="Quality" />
-                <ScalarProperty Name="Price" ColumnName="Price" />
-                <ScalarProperty Name="Amount" ColumnName="Amount" />
+                <ScalarProperty Name="GoodTitle" ColumnName="GoodTitle" />
                 <ScalarProperty Name="GoodPhoto" ColumnName="GoodPhoto" />
                 <ScalarProperty Name="GoodDescribe" ColumnName="GoodDescribe" />
+                <ScalarProperty Name="Amount" ColumnName="Amount" />
+                <ScalarProperty Name="Quality" ColumnName="Quality" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -681,7 +608,6 @@
             <EntityTypeMapping TypeName="PurchaSalerModel.OrderItem">
               <MappingFragment StoreEntitySet="OrderItems">
                 <ScalarProperty Name="OrderItemID" ColumnName="OrderItemID" />
-                <ScalarProperty Name="OrderID" ColumnName="OrderID" />
                 <ScalarProperty Name="GoodID" ColumnName="GoodID" />
                 <ScalarProperty Name="Price" ColumnName="Price" />
                 <ScalarProperty Name="Amount" ColumnName="Amount" />
@@ -693,7 +619,6 @@
             <EntityTypeMapping TypeName="PurchaSalerModel.Order">
               <MappingFragment StoreEntitySet="Orders">
                 <ScalarProperty Name="OrderID" ColumnName="OrderID" />
-                <ScalarProperty Name="UserID" ColumnName="UserID" />
                 <ScalarProperty Name="OrderTime" ColumnName="OrderTime" />
                 <ScalarProperty Name="Total" ColumnName="Total" />
               </MappingFragment>
@@ -703,7 +628,6 @@
             <EntityTypeMapping TypeName="PurchaSalerModel.ReplyComment">
               <MappingFragment StoreEntitySet="ReplyComment">
                 <ScalarProperty Name="ReplyGoodID" ColumnName="ReplyGoodID" />
-                <ScalarProperty Name="UserID" ColumnName="UserID" />
                 <ScalarProperty Name="GoodCommentID" ColumnName="GoodCommentID" />
                 <ScalarProperty Name="ReplyContent" ColumnName="ReplyContent" />
                 <ScalarProperty Name="ReplyTime" ColumnName="ReplyTime" />
@@ -714,7 +638,6 @@
             <EntityTypeMapping TypeName="PurchaSalerModel.ShopCart">
               <MappingFragment StoreEntitySet="ShopCarts">
                 <ScalarProperty Name="UserID" ColumnName="UserID" />
-                <ScalarProperty Name="GoodID" ColumnName="GoodID" />
                 <ScalarProperty Name="Price" ColumnName="Price" />
                 <ScalarProperty Name="Amount" ColumnName="Amount" />
                 <ScalarProperty Name="Total" ColumnName="Total" />
@@ -753,6 +676,78 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <AssociationSetMapping Name="FK_AdressInfo_Users" TypeName="PurchaSalerModel.FK_AdressInfo_Users" StoreEntitySet="AdressInfo">
+            <EndProperty Name="Users">
+              <ScalarProperty Name="UserID" ColumnName="UserID" />
+            </EndProperty>
+            <EndProperty Name="AdressInfo">
+              <ScalarProperty Name="AdressID" ColumnName="AdressID" />
+            </EndProperty>
+            <Condition IsNull="false" ColumnName="UserID" />
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="FK_Goods_Category" TypeName="PurchaSalerModel.FK_Goods_Category" StoreEntitySet="Goods">
+            <EndProperty Name="Category">
+              <ScalarProperty Name="CategoryID" ColumnName="CategoryID" />
+            </EndProperty>
+            <EndProperty Name="Goods">
+              <ScalarProperty Name="GoodID" ColumnName="GoodID" />
+            </EndProperty>
+            <Condition IsNull="false" ColumnName="CategoryID" />
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="FK_GoodComment_Goods" TypeName="PurchaSalerModel.FK_GoodComment_Goods" StoreEntitySet="GoodComment">
+            <EndProperty Name="Goods">
+              <ScalarProperty Name="GoodID" ColumnName="GoodID" />
+            </EndProperty>
+            <EndProperty Name="GoodComment">
+              <ScalarProperty Name="GoodCommentID" ColumnName="GoodCommentID" />
+            </EndProperty>
+            <Condition IsNull="false" ColumnName="GoodID" />
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="FK_GoodComment_Users" TypeName="PurchaSalerModel.FK_GoodComment_Users" StoreEntitySet="GoodComment">
+            <EndProperty Name="Users">
+              <ScalarProperty Name="UserID" ColumnName="UserID" />
+            </EndProperty>
+            <EndProperty Name="GoodComment">
+              <ScalarProperty Name="GoodCommentID" ColumnName="GoodCommentID" />
+            </EndProperty>
+            <Condition IsNull="false" ColumnName="UserID" />
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="FK_ShopCarts_Goods" TypeName="PurchaSalerModel.FK_ShopCarts_Goods" StoreEntitySet="ShopCarts">
+            <EndProperty Name="Goods">
+              <ScalarProperty Name="GoodID" ColumnName="GoodID" />
+            </EndProperty>
+            <EndProperty Name="ShopCarts">
+              <ScalarProperty Name="UserID" ColumnName="UserID" />
+            </EndProperty>
+            <Condition IsNull="false" ColumnName="GoodID" />
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="FK_OrderItems_Orders" TypeName="PurchaSalerModel.FK_OrderItems_Orders" StoreEntitySet="OrderItems">
+            <EndProperty Name="Orders">
+              <ScalarProperty Name="OrderID" ColumnName="OrderID" />
+            </EndProperty>
+            <EndProperty Name="OrderItems">
+              <ScalarProperty Name="OrderItemID" ColumnName="OrderItemID" />
+            </EndProperty>
+            <Condition IsNull="false" ColumnName="OrderID" />
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="FK_Orders_Users" TypeName="PurchaSalerModel.FK_Orders_Users" StoreEntitySet="Orders">
+            <EndProperty Name="Users">
+              <ScalarProperty Name="UserID" ColumnName="UserID" />
+            </EndProperty>
+            <EndProperty Name="Orders">
+              <ScalarProperty Name="OrderID" ColumnName="OrderID" />
+            </EndProperty>
+            <Condition IsNull="false" ColumnName="UserID" />
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="FK_ReplyComment_Users" TypeName="PurchaSalerModel.FK_ReplyComment_Users" StoreEntitySet="ReplyComment">
+            <EndProperty Name="Users">
+              <ScalarProperty Name="UserID" ColumnName="UserID" />
+            </EndProperty>
+            <EndProperty Name="ReplyComment">
+              <ScalarProperty Name="ReplyGoodID" ColumnName="ReplyGoodID" />
+            </EndProperty>
+            <Condition IsNull="false" ColumnName="UserID" />
+          </AssociationSetMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
@@ -768,7 +763,7 @@
       <DesignerInfoPropertySet>
         <DesignerProperty Name="ValidateOnBuild" Value="true" />
         <DesignerProperty Name="EnablePluralization" Value="true" />
-        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="false" />
         <DesignerProperty Name="UseLegacyProvider" Value="false" />
         <DesignerProperty Name="CodeGenerationStrategy" Value="无" />
       </DesignerInfoPropertySet>
