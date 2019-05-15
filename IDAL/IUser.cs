@@ -12,5 +12,6 @@ namespace IDAL
         User GetUserInfo(string username);
         List<User> SelectUser(string username);
         int Login(User man);
+        void InsertUser(User man);
     }
 }

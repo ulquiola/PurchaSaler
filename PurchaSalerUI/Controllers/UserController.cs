@@ -44,7 +44,14 @@ namespace PurchaSalerUI.Controllers
         [HttpPost]
         public ActionResult Register(User man)
         {
-            return Content("1");
+            usermanager.InsertUser(man);
+            return RedirectToAction("Login", "User");
+        }
+
+        public ActionResult Logout()
+        {
+            Session.Clear();
+            return RedirectToAction("Index", "User");
         }
     }
 }

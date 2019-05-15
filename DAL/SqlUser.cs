@@ -39,6 +39,11 @@ namespace DAL
             return result;
         }
 
-        
+        public void InsertUser(User man)
+        {
+            man.Avatar = "/Content/img/avatar/default_avatar.png";
+            db.Users.Add(man);
+            db.SaveChanges();
+        }
     }
 }

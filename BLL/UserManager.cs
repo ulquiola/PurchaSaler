@@ -29,5 +29,9 @@ namespace BLL
             return iuser.Login(man);
         }
 
+        public void InsertUser(User man)
+        {
+            iuser.InsertUser(man);
+        }
     }
 }
