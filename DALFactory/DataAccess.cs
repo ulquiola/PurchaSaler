@@ -20,6 +20,11 @@ namespace DALFactory
             string className = "DAL.SqlUser";
             return (IUser)Assembly.Load(AssemblyName).CreateInstance(className);
         }
+        public static IShop CreateShop()
+        {
+            string className = "DAL.SqlShop";
+            return (IShop)Assembly.Load(AssemblyName).CreateInstance(className);
+        }
 
     }
 }

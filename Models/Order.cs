@@ -21,6 +21,7 @@ namespace Models
         }
     
         public int OrderID { get; set; }
+        public Nullable<int> UserID { get; set; }
         public Nullable<System.DateTime> OrderTime { get; set; }
         public Nullable<decimal> Total { get; set; }
     

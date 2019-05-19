@@ -15,6 +15,7 @@ namespace Models
     public partial class OrderItem
     {
         public int OrderItemID { get; set; }
+        public Nullable<int> OrderID { get; set; }
         public Nullable<int> GoodID { get; set; }
         public Nullable<decimal> Price { get; set; }
         public Nullable<int> Amount { get; set; }

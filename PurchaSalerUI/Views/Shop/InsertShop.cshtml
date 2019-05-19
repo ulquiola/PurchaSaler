@@ -1,0 +1,16 @@
+﻿@model Models.Shop
+
+@{
+    ViewBag.Title = "InsertShop";
+    int userid = int.Parse(@Session["UserID"].ToString());
+}
+    <form action="/" method="post">
+        <h2>添加店铺</h2>
+        <h2>userid:@Session["UserID"]</h2>
+
+        @Html.TextBoxFor(s=>s.UserID==userid);
+        <div class="shopname">
+            @Html.TextBoxFor(s=>s.ShopName,new {placeholder="输入你的商铺名" })
+        </div>
+        <div class="btn"><input type="submit" name="sub" value="确认添加" /></div>
+    </form>

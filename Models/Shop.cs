@@ -14,8 +14,8 @@ namespace Models
     
     public partial class Shop
     {
-        public int UserID { get; set; }
         public int ShopID { get; set; }
+        public int UserID { get; set; }
         public string ShopName { get; set; }
     
         public virtual User User { get; set; }

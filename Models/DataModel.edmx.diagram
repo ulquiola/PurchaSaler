@@ -4,18 +4,18 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="5465c509dc9a4afc9c4e6ba46551b7eb" Name="Diagram1">
-        <EntityTypeShape EntityType="PurchaSalerModel.AdressInfo" Width="1.5" PointX="3" PointY="5.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="PurchaSalerModel.Category" Width="1.5" PointX="1.5" PointY="2.625" IsExpanded="true" />
+      <Diagram DiagramId="7f2ec4cc5c3d48858ef839f09aa86147" Name="Diagram1">
+        <EntityTypeShape EntityType="PurchaSalerModel.AdressInfo" Width="1.5" PointX="3" PointY="5.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="PurchaSalerModel.Category" Width="1.5" PointX="1.5" PointY="1.625" IsExpanded="true" />
         <EntityTypeShape EntityType="PurchaSalerModel.GoodComment" Width="1.5" PointX="6" PointY="7.25" IsExpanded="true" />
         <EntityTypeShape EntityType="PurchaSalerModel.Good" Width="1.5" PointX="3.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="PurchaSalerModel.OrderItem" Width="1.5" PointX="5.25" PointY="10.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="PurchaSalerModel.Order" Width="1.5" PointX="3" PointY="10.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="PurchaSalerModel.ReplyComment" Width="1.5" PointX="3" PointY="13.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="PurchaSalerModel.ShopCart" Width="1.5" PointX="8" PointY="10.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="PurchaSalerModel.Shop" Width="1.5" PointX="3" PointY="18.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="PurchaSalerModel.sysdiagram" Width="1.5" PointX="5.75" PointY="1.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="PurchaSalerModel.User" Width="1.5" PointX="0.75" PointY="8.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="PurchaSalerModel.OrderItem" Width="1.5" PointX="5.25" PointY="10.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="PurchaSalerModel.Order" Width="1.5" PointX="3" PointY="11" IsExpanded="true" />
+        <EntityTypeShape EntityType="PurchaSalerModel.ReplyComment" Width="1.5" PointX="3" PointY="14" IsExpanded="true" />
+        <EntityTypeShape EntityType="PurchaSalerModel.ShopCart" Width="1.5" PointX="6" PointY="14.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="PurchaSalerModel.Shop" Width="1.5" PointX="3" PointY="19.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="PurchaSalerModel.sysdiagram" Width="1.5" PointX="5.75" PointY="1.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="PurchaSalerModel.User" Width="1.5" PointX="0.75" PointY="8.75" IsExpanded="true" />
         <AssociationConnector Association="PurchaSalerModel.FK_AdressInfo_Users" ManuallyRouted="false" />
         <AssociationConnector Association="PurchaSalerModel.FK_Goods_Category" ManuallyRouted="false" />
         <AssociationConnector Association="PurchaSalerModel.FK_GoodComment_Goods" ManuallyRouted="false" />

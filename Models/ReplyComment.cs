@@ -15,6 +15,7 @@ namespace Models
     public partial class ReplyComment
     {
         public int ReplyGoodID { get; set; }
+        public Nullable<int> UserID { get; set; }
         public Nullable<int> GoodCommentID { get; set; }
         public string ReplyContent { get; set; }
         public Nullable<System.DateTime> ReplyTime { get; set; }

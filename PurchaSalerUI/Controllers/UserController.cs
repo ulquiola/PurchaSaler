@@ -24,7 +24,7 @@ namespace PurchaSalerUI.Controllers
 
             if (u>0)
             {
-                Session["UserID"] = man.UserID;
+                Session["UserID"] = uinfo.UserID;
                 Session["UserName"] = man.UserName;
                 Session["Avatar"] = uinfo.Avatar;
 
