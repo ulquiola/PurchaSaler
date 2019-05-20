@@ -15,13 +15,15 @@ namespace PurchaSalerUI.Controllers
             ShopManager shopManager = new ShopManager();
             int userid = int.Parse(Session["UserID"].ToString());
             var s = shopManager.GetShop(userid);
+            //判断当前用户有没有开设店铺
             if (s != null)
             {
-                return RedirectToAction("AddGoods", "Good");//转到发布商品视图               
+                return View("AddGoods");//转到发布商品视图 
+
             }
             else
             {
-                return RedirectToAction("InsertShop", "Shop");//转到添加商铺视图
+                return RedirectToAction("AddShop", "Shop");//转到添加商铺视图
             }
         }
     }

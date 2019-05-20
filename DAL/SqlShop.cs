@@ -20,7 +20,7 @@ namespace DAL
             return shop.FirstOrDefault();
         }
 
-        public void InserShop(Shop s)
+        public void AddShop(Shop s)
         {
             db.Shops.Add(s);
             db.SaveChanges();

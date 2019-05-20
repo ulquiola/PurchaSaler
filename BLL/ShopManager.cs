@@ -19,9 +19,9 @@ namespace BLL
             return ishoper.GetShop(userid);
         }
 
-        public void InsertShop(Shop s)
+        public void AddShop(Shop s)
         {
-            ishoper.InserShop(s);
+            ishoper.AddShop(s);
         }
     }
 }

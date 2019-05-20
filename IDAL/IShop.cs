@@ -10,6 +10,6 @@ namespace IDAL
     public interface IShop
     {
         Shop GetShop(int userid);
-        void InserShop(Shop s);
+        void AddShop(Shop s);
     }
 }

@@ -11,14 +11,18 @@ namespace PurchaSalerUI.Controllers
     public class ShopController : Controller
     {
         ShopManager shopManager = new ShopManager();
-       public ActionResult InsertShop()
+       public ActionResult AddShop()
         {
             return View();
         }
         [HttpPost]
-        public ActionResult InsertShop(Shop s)
+        public ActionResult AddShop(Shop s)
         {
-            shopManager.InsertShop(s);
+            int userid = Convert.ToInt32(Session["UserID"]);
+            //将当前userid插入到model中
+            s.UserID = userid;
+            //添加商铺
+            shopManager.AddShop(s);
             return RedirectToAction("AddGoods", "Good");//转到发布商品视图
         }
     }
