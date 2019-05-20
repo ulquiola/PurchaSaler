@@ -26,5 +26,10 @@ namespace PurchaSalerUI.Controllers
                 return RedirectToAction("AddShop", "Shop");//转到添加商铺视图
             }
         }
+        [HttpPost]
+        public ActionResult AddGoods(Good goods)
+        {
+            return View();
+        }
     }
 }
