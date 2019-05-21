@@ -28,7 +28,7 @@ namespace DALFactory
 
         public static IGoods CreatreGoods()
         {
-            string className = "DAL.SqlGood";
+            string className = "DAL.SqlGoods";
             return (IGoods)Assembly.Load(AssemblyName).CreateInstance(className);
         }
     }
