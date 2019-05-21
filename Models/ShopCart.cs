@@ -20,7 +20,6 @@ namespace Models
         public Nullable<int> Amount { get; set; }
         public Nullable<decimal> Total { get; set; }
     
-        public virtual Good Good { get; set; }
         public virtual User User { get; set; }
     }
 }

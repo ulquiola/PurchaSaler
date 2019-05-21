@@ -38,11 +38,11 @@ namespace PurchaSalerUI.Controllers
         public ActionResult AddGoods(Good goods)
         {
             goods.ShopID = Convert.ToInt32(Session["ShopID"]);
-            return Content(goods.CategoryID.ToString());
-            //GoodsManager goodsManager = new GoodsManager();
-            //goodsManager.AddGoods(goods);
+            //return Content(goods.CategoryID.ToString());
+            GoodsManager goodsManager = new GoodsManager();
+            goodsManager.AddGoods(goods);
 
-            //return RedirectToAction("Index","Home");
+            return RedirectToAction("Index","Home");
         }
     }
 }

@@ -20,7 +20,6 @@ namespace Models
         public string Comment { get; set; }
         public Nullable<System.DateTime> PublishTime { get; set; }
     
-        public virtual Good Good { get; set; }
         public virtual User User { get; set; }
     }
 }

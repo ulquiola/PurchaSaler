@@ -14,13 +14,6 @@ namespace Models
     
     public partial class Good
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Good()
-        {
-            this.GoodComments = new HashSet<GoodComment>();
-            this.ShopCarts = new HashSet<ShopCart>();
-        }
-    
         public int GoodID { get; set; }
         public Nullable<int> ShopID { get; set; }
         public Nullable<int> CategoryID { get; set; }
@@ -30,11 +23,5 @@ namespace Models
         public Nullable<int> Amount { get; set; }
         public string Quality { get; set; }
         public Nullable<decimal> Price { get; set; }
-    
-        public virtual Category Category { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<GoodComment> GoodComments { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<ShopCart> ShopCarts { get; set; }
     }
 }
