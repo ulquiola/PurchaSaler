@@ -70,3 +70,25 @@
 
 7.出现“未能加载文件或程序集“DAL”或它的某一个的依赖项”错误
 	修改DAL层属性，把生成的输出路径改为UI层的/bin目录下
+
+8.EF数据库插入问题使用try{}catch{}找出问题所在
+	try
+            {
+                db.SaveChanges();
+
+            }
+            catch (DbEntityValidationException e)
+            {
+                foreach (var valErrors in e.EntityValidationErrors)
+                {
+                    foreach (var errors in valErrors.ValidationErrors)
+                    {
+                        //here you will get property name and error message
+                        Trace.TraceInformation("Property: {0} Error: {1}",
+                                        errors.PropertyName,
+                                        errors.ErrorMessage);
+                    }
+
+                }
+                throw;
+            }

@@ -22,6 +22,7 @@
         <AssociationConnector Association="PurchaSalerModel.FK_ReplyComment_Users" ManuallyRouted="false" />
         <AssociationConnector Association="PurchaSalerModel.FK_ShopCarts_Users1" ManuallyRouted="false" />
         <AssociationConnector Association="PurchaSalerModel.FK_Shops_Users" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="PurchaSalerModel.sysdiagram" Width="1.5" PointX="7.375" PointY="4.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity.Validation;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Web;
@@ -37,17 +39,15 @@ namespace PurchaSalerUI.Controllers
         [HttpPost]
         public ActionResult AddGoods(Good goods)
         {
-            //文件上传
             HttpPostedFileBase image = Request.Files["image"];
-            string SavePath = Server.MapPath("~/Content/img/imageGood/");//路径后要以/结尾
-            string imageName = image.FileName;
+            string SavePath = Server.MapPath("~/Content/img/imageGood/");
+            string imageName = DateTime.Now.ToFileTime().ToString()+image.FileName;
             image.SaveAs(Path.Combine(SavePath, imageName));
-            
-            goods.GoodPhoto = "/Content/img/" + imageName;//图片路径写入model
-            goods.ShopID = Convert.ToInt32(Session["ShopID"]);//当前店铺ID写入model
-            GoodsManager goodsManager = new GoodsManager();//将视图传入的各值传入model
-            goodsManager.AddGoods(goods);
 
+            goods.GoodPhoto = "/Content/img/imageGood/"+imageName;
+            goods.ShopID = Convert.ToInt32(Session["ShopID"]);
+            GoodsManager goodsManager = new GoodsManager();
+            goodsManager.AddGoods(goods);
             return RedirectToAction("Index", "Home");
         }
     }
