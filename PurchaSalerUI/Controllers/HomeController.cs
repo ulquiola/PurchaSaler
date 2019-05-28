@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using Models;
+using PurchaSalerUI.Models;
 
 namespace PurchaSalerUI.Controllers
 {
@@ -12,8 +13,14 @@ namespace PurchaSalerUI.Controllers
         public ActionResult Index()
         {
             PurchaSalerEntities db = new PurchaSalerEntities();
-            var data = db.Goods.ToList();
-            return View(data);
+            var goods = db.Goods.OrderBy(g => g.GoodID).Take(4);
+            var users = db.Users;
+            var shops = db.Shops;
+            IndexViewModel indexView = new IndexViewModel();
+            indexView.goods = goods;
+            indexView.users = users;
+            indexView.shops = shops;
+            return View(indexView);
         }
 
         public ActionResult About()
