@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using Models;
 
 namespace PurchaSalerUI.Controllers
 {
@@ -10,7 +11,9 @@ namespace PurchaSalerUI.Controllers
     {
         public ActionResult Index()
         {
-            return View();
+            PurchaSalerEntities db = new PurchaSalerEntities();
+            var data = db.Goods.ToList();
+            return View(data);
         }
 
         public ActionResult About()

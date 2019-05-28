@@ -1,4 +1,4 @@
-﻿
+﻿@model IEnumerable<Models.Good>
 @{
     ViewBag.Title = "Home Page";
 }
@@ -65,293 +65,312 @@
 
     <div class="goods">
         <div class="row">
-            <div class="card">
-                <img src="~/Content/img/ex1.jpg" />
-                <div class="info">
-                    <div class="desc"><p> 余潇潇春装2018新款简单大方轻盈网纱连衣裙丝滑… 颜色分类雅致灰-预售15个工作日,尺码M</p></div>
-                    <div class="price">
-                        <p>￥50</p>
-                    </div>
-                    <hr style="margin:5px 0 5px 0" />
-                    <div class="saler">
-                        <img src="http://img.alicdn.com/bao/uploaded/i2/O1CN01JFIFk01OKgddI0Qnr_!!0-fleamarket.jpg" />
-                        <p class="user-name" style="display:inline">七***6</p>
-                    </div>
-                </div>
-            </div>
-            <div class="card">
-                <img src="~/Content/img/ex1.jpg" />
-                <div class="info">
-                    <div class="desc"><p> 余潇潇春装2018新款简单大方轻盈网纱连衣裙丝滑… 颜色分类雅致灰-预售15个工作日,尺码M</p></div>
-                    <div class="price">
-                        <p>￥50</p>
-                    </div>
-                    <hr style="margin:5px 0 5px 0" />
-                    <div class="saler">
-                        <img src="http://img.alicdn.com/bao/uploaded/i2/O1CN01JFIFk01OKgddI0Qnr_!!0-fleamarket.jpg" />
-                        <p class="user-name" style="display:inline">七***6</p>
+            @foreach (var item in Model)
+            {
+                <div class="card">
+                    <img src="~/Content/img/ex1.jpg" />
+                    <div class="info">
+                        <div class="desc"><p>@item.GoodDescribe</p></div>
+                        <div class="price">
+                            <p>￥@item.Price</p>
+                        </div>
+                        <hr style="margin:5px 0 5px 0" />
+                        <div class="saler">
+                            <img src="@item.GoodPhoto" />
+                            <p class="user-name" style="display:inline">@item.ShopID</p>
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div class="card">
-                <img src="~/Content/img/ex1.jpg" />
-                <div class="info">
-                    <div class="desc"><p> 余潇潇春装2018新款简单大方轻盈网纱连衣裙丝滑… 颜色分类雅致灰-预售15个工作日,尺码M</p></div>
-                    <div class="price">
-                        <p>￥50</p>
-                    </div>
-                    <hr style="margin:5px 0 5px 0" />
-                    <div class="saler">
-                        <img src="http://img.alicdn.com/bao/uploaded/i2/O1CN01JFIFk01OKgddI0Qnr_!!0-fleamarket.jpg" />
-                        <p class="user-name" style="display:inline">七***6</p>
-                    </div>
-                </div>
-            </div>
-            <div class="card">
-                <img src="~/Content/img/ex1.jpg" />
-                <div class="info">
-                    <div class="desc"><p> 余潇潇春装2018新款简单大方轻盈网纱连衣裙丝滑… 颜色分类雅致灰-预售15个工作日,尺码M</p></div>
-                    <div class="price">
-                        <p>￥50</p>
-                    </div>
-                    <hr style="margin:5px 0 5px 0" />
-                    <div class="saler">
-                        <img src="http://img.alicdn.com/bao/uploaded/i2/O1CN01JFIFk01OKgddI0Qnr_!!0-fleamarket.jpg" />
-                        <p class="user-name" style="display:inline">七***6</p>
-                    </div>
-                </div>
-            </div>
-            <div class="card">
-                <img src="~/Content/img/ex1.jpg" />
-                <div class="info">
-                    <div class="desc"><p> 余潇潇春装2018新款简单大方轻盈网纱连衣裙丝滑… 颜色分类雅致灰-预售15个工作日,尺码M</p></div>
-                    <div class="price">
-                        <p>￥50</p>
-                    </div>
-                    <hr style="margin:5px 0 5px 0" />
-                    <div class="saler">
-                        <img src="http://img.alicdn.com/bao/uploaded/i2/O1CN01JFIFk01OKgddI0Qnr_!!0-fleamarket.jpg" />
-                        <p class="user-name" style="display:inline">七***6</p>
-                    </div>
-                </div>
-            </div>
+            }
         </div>
-        <div class="row">
-            <div class="card">
-                <img src="~/Content/img/ex1.jpg" />
-                <div class="info">
-                    <div class="desc"><p> 余潇潇春装2018新款简单大方轻盈网纱连衣裙丝滑… 颜色分类雅致灰-预售15个工作日,尺码M</p></div>
-                    <div class="price">
-                        <p>￥50</p>
+                @*<div class="row">
+                    <div class="card">
+                        <img src="~/Content/img/ex1.jpg" />
+                        <div class="info">
+                            <div class="desc"><p> 余潇潇春装2018新款简单大方轻盈网纱连衣裙丝滑… 颜色分类雅致灰-预售15个工作日,尺码M</p></div>
+                            <div class="price">
+                                <p>￥50</p>
+                            </div>
+                            <hr style="margin:5px 0 5px 0" />
+                            <div class="saler">
+                                <img src="http://img.alicdn.com/bao/uploaded/i2/O1CN01JFIFk01OKgddI0Qnr_!!0-fleamarket.jpg" />
+                                <p class="user-name" style="display:inline">七***6</p>
+                            </div>
+                        </div>
                     </div>
-                    <hr style="margin:5px 0 5px 0" />
-                    <div class="saler">
-                        <img src="http://img.alicdn.com/bao/uploaded/i2/O1CN01JFIFk01OKgddI0Qnr_!!0-fleamarket.jpg" />
-                        <p class="user-name" style="display:inline">七***6</p>
+                    <div class="card">
+                        <img src="~/Content/img/ex1.jpg" />
+                        <div class="info">
+                            <div class="desc"><p> 余潇潇春装2018新款简单大方轻盈网纱连衣裙丝滑… 颜色分类雅致灰-预售15个工作日,尺码M</p></div>
+                            <div class="price">
+                                <p>￥50</p>
+                            </div>
+                            <hr style="margin:5px 0 5px 0" />
+                            <div class="saler">
+                                <img src="http://img.alicdn.com/bao/uploaded/i2/O1CN01JFIFk01OKgddI0Qnr_!!0-fleamarket.jpg" />
+                                <p class="user-name" style="display:inline">七***6</p>
+                            </div>
+                        </div>
                     </div>
-                </div>
-            </div>
-            <div class="card">
-                <img src="~/Content/img/ex1.jpg" />
-                <div class="info">
-                    <div class="desc"><p> 余潇潇春装2018新款简单大方轻盈网纱连衣裙丝滑… 颜色分类雅致灰-预售15个工作日,尺码M</p></div>
-                    <div class="price">
-                        <p>￥50</p>
+                    <div class="card">
+                        <img src="~/Content/img/ex1.jpg" />
+                        <div class="info">
+                            <div class="desc"><p> 余潇潇春装2018新款简单大方轻盈网纱连衣裙丝滑… 颜色分类雅致灰-预售15个工作日,尺码M</p></div>
+                            <div class="price">
+                                <p>￥50</p>
+                            </div>
+                            <hr style="margin:5px 0 5px 0" />
+                            <div class="saler">
+                                <img src="http://img.alicdn.com/bao/uploaded/i2/O1CN01JFIFk01OKgddI0Qnr_!!0-fleamarket.jpg" />
+                                <p class="user-name" style="display:inline">七***6</p>
+                            </div>
+                        </div>
                     </div>
-                    <hr style="margin:5px 0 5px 0" />
-                    <div class="saler">
-                        <img src="http://img.alicdn.com/bao/uploaded/i2/O1CN01JFIFk01OKgddI0Qnr_!!0-fleamarket.jpg" />
-                        <p class="user-name" style="display:inline">七***6</p>
+                    <div class="card">
+                        <img src="~/Content/img/ex1.jpg" />
+                        <div class="info">
+                            <div class="desc"><p> 余潇潇春装2018新款简单大方轻盈网纱连衣裙丝滑… 颜色分类雅致灰-预售15个工作日,尺码M</p></div>
+                            <div class="price">
+                                <p>￥50</p>
+                            </div>
+                            <hr style="margin:5px 0 5px 0" />
+                            <div class="saler">
+                                <img src="http://img.alicdn.com/bao/uploaded/i2/O1CN01JFIFk01OKgddI0Qnr_!!0-fleamarket.jpg" />
+                                <p class="user-name" style="display:inline">七***6</p>
+                            </div>
+                        </div>
                     </div>
-                </div>
-            </div>
-            <div class="card">
-                <img src="~/Content/img/ex1.jpg" />
-                <div class="info">
-                    <div class="desc"><p> 余潇潇春装2018新款简单大方轻盈网纱连衣裙丝滑… 颜色分类雅致灰-预售15个工作日,尺码M</p></div>
-                    <div class="price">
-                        <p>￥50</p>
-                    </div>
-                    <hr style="margin:5px 0 5px 0" />
-                    <div class="saler">
-                        <img src="http://img.alicdn.com/bao/uploaded/i2/O1CN01JFIFk01OKgddI0Qnr_!!0-fleamarket.jpg" />
-                        <p class="user-name" style="display:inline">七***6</p>
-                    </div>
-                </div>
-            </div>
-            <div class="card">
-                <img src="~/Content/img/ex1.jpg" />
-                <div class="info">
-                    <div class="desc"><p> 余潇潇春装2018新款简单大方轻盈网纱连衣裙丝滑… 颜色分类雅致灰-预售15个工作日,尺码M</p></div>
-                    <div class="price">
-                        <p>￥50</p>
-                    </div>
-                    <hr style="margin:5px 0 5px 0" />
-                    <div class="saler">
-                        <img src="http://img.alicdn.com/bao/uploaded/i2/O1CN01JFIFk01OKgddI0Qnr_!!0-fleamarket.jpg" />
-                        <p class="user-name" style="display:inline">七***6</p>
-                    </div>
-                </div>
-            </div>
-            <div class="card">
-                <img src="~/Content/img/ex1.jpg" />
-                <div class="info">
-                    <div class="desc"><p> 余潇潇春装2018新款简单大方轻盈网纱连衣裙丝滑… 颜色分类雅致灰-预售15个工作日,尺码M</p></div>
-                    <div class="price">
-                        <p>￥50</p>
-                    </div>
-                    <hr style="margin:5px 0 5px 0" />
-                    <div class="saler">
-                        <img src="http://img.alicdn.com/bao/uploaded/i2/O1CN01JFIFk01OKgddI0Qnr_!!0-fleamarket.jpg" />
-                        <p class="user-name" style="display:inline">七***6</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="card">
-                <img src="~/Content/img/ex1.jpg" />
-                <div class="info">
-                    <div class="desc"><p> 余潇潇春装2018新款简单大方轻盈网纱连衣裙丝滑… 颜色分类雅致灰-预售15个工作日,尺码M</p></div>
-                    <div class="price">
-                        <p>￥50</p>
-                    </div>
-                    <hr style="margin:5px 0 5px 0" />
-                    <div class="saler">
-                        <img src="http://img.alicdn.com/bao/uploaded/i2/O1CN01JFIFk01OKgddI0Qnr_!!0-fleamarket.jpg" />
-                        <p class="user-name" style="display:inline">七***6</p>
+                    <div class="card">
+                        <img src="~/Content/img/ex1.jpg" />
+                        <div class="info">
+                            <div class="desc"><p> 余潇潇春装2018新款简单大方轻盈网纱连衣裙丝滑… 颜色分类雅致灰-预售15个工作日,尺码M</p></div>
+                            <div class="price">
+                                <p>￥50</p>
+                            </div>
+                            <hr style="margin:5px 0 5px 0" />
+                            <div class="saler">
+                                <img src="http://img.alicdn.com/bao/uploaded/i2/O1CN01JFIFk01OKgddI0Qnr_!!0-fleamarket.jpg" />
+                                <p class="user-name" style="display:inline">七***6</p>
+                            </div>
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div class="card">
-                <img src="~/Content/img/ex1.jpg" />
-                <div class="info">
-                    <div class="desc"><p> 余潇潇春装2018新款简单大方轻盈网纱连衣裙丝滑… 颜色分类雅致灰-预售15个工作日,尺码M</p></div>
-                    <div class="price">
-                        <p>￥50</p>
+                <div class="row">
+                    <div class="card">
+                        <img src="~/Content/img/ex1.jpg" />
+                        <div class="info">
+                            <div class="desc"><p> 余潇潇春装2018新款简单大方轻盈网纱连衣裙丝滑… 颜色分类雅致灰-预售15个工作日,尺码M</p></div>
+                            <div class="price">
+                                <p>￥50</p>
+                            </div>
+                            <hr style="margin:5px 0 5px 0" />
+                            <div class="saler">
+                                <img src="http://img.alicdn.com/bao/uploaded/i2/O1CN01JFIFk01OKgddI0Qnr_!!0-fleamarket.jpg" />
+                                <p class="user-name" style="display:inline">七***6</p>
+                            </div>
+                        </div>
                     </div>
-                    <hr style="margin:5px 0 5px 0" />
-                    <div class="saler">
-                        <img src="http://img.alicdn.com/bao/uploaded/i2/O1CN01JFIFk01OKgddI0Qnr_!!0-fleamarket.jpg" />
-                        <p class="user-name" style="display:inline">七***6</p>
+                    <div class="card">
+                        <img src="~/Content/img/ex1.jpg" />
+                        <div class="info">
+                            <div class="desc"><p> 余潇潇春装2018新款简单大方轻盈网纱连衣裙丝滑… 颜色分类雅致灰-预售15个工作日,尺码M</p></div>
+                            <div class="price">
+                                <p>￥50</p>
+                            </div>
+                            <hr style="margin:5px 0 5px 0" />
+                            <div class="saler">
+                                <img src="http://img.alicdn.com/bao/uploaded/i2/O1CN01JFIFk01OKgddI0Qnr_!!0-fleamarket.jpg" />
+                                <p class="user-name" style="display:inline">七***6</p>
+                            </div>
+                        </div>
                     </div>
-                </div>
-            </div>
-            <div class="card">
-                <img src="~/Content/img/ex1.jpg" />
-                <div class="info">
-                    <div class="desc"><p> 余潇潇春装2018新款简单大方轻盈网纱连衣裙丝滑… 颜色分类雅致灰-预售15个工作日,尺码M</p></div>
-                    <div class="price">
-                        <p>￥50</p>
+                    <div class="card">
+                        <img src="~/Content/img/ex1.jpg" />
+                        <div class="info">
+                            <div class="desc"><p> 余潇潇春装2018新款简单大方轻盈网纱连衣裙丝滑… 颜色分类雅致灰-预售15个工作日,尺码M</p></div>
+                            <div class="price">
+                                <p>￥50</p>
+                            </div>
+                            <hr style="margin:5px 0 5px 0" />
+                            <div class="saler">
+                                <img src="http://img.alicdn.com/bao/uploaded/i2/O1CN01JFIFk01OKgddI0Qnr_!!0-fleamarket.jpg" />
+                                <p class="user-name" style="display:inline">七***6</p>
+                            </div>
+                        </div>
                     </div>
-                    <hr style="margin:5px 0 5px 0" />
-                    <div class="saler">
-                        <img src="http://img.alicdn.com/bao/uploaded/i2/O1CN01JFIFk01OKgddI0Qnr_!!0-fleamarket.jpg" />
-                        <p class="user-name" style="display:inline">七***6</p>
+                    <div class="card">
+                        <img src="~/Content/img/ex1.jpg" />
+                        <div class="info">
+                            <div class="desc"><p> 余潇潇春装2018新款简单大方轻盈网纱连衣裙丝滑… 颜色分类雅致灰-预售15个工作日,尺码M</p></div>
+                            <div class="price">
+                                <p>￥50</p>
+                            </div>
+                            <hr style="margin:5px 0 5px 0" />
+                            <div class="saler">
+                                <img src="http://img.alicdn.com/bao/uploaded/i2/O1CN01JFIFk01OKgddI0Qnr_!!0-fleamarket.jpg" />
+                                <p class="user-name" style="display:inline">七***6</p>
+                            </div>
+                        </div>
                     </div>
-                </div>
-            </div>
-            <div class="card">
-                <img src="~/Content/img/ex1.jpg" />
-                <div class="info">
-                    <div class="desc"><p> 余潇潇春装2018新款简单大方轻盈网纱连衣裙丝滑… 颜色分类雅致灰-预售15个工作日,尺码M</p></div>
-                    <div class="price">
-                        <p>￥50</p>
-                    </div>
-                    <hr style="margin:5px 0 5px 0" />
-                    <div class="saler">
-                        <img src="http://img.alicdn.com/bao/uploaded/i2/O1CN01JFIFk01OKgddI0Qnr_!!0-fleamarket.jpg" />
-                        <p class="user-name" style="display:inline">七***6</p>
-                    </div>
-                </div>
-            </div>
-            <div class="card">
-                <img src="~/Content/img/ex1.jpg" />
-                <div class="info">
-                    <div class="desc"><p> 余潇潇春装2018新款简单大方轻盈网纱连衣裙丝滑… 颜色分类雅致灰-预售15个工作日,尺码M</p></div>
-                    <div class="price">
-                        <p>￥50</p>
-                    </div>
-                    <hr style="margin:5px 0 5px 0" />
-                    <div class="saler">
-                        <img src="http://img.alicdn.com/bao/uploaded/i2/O1CN01JFIFk01OKgddI0Qnr_!!0-fleamarket.jpg" />
-                        <p class="user-name" style="display:inline">七***6</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="card">
-                <img src="~/Content/img/ex1.jpg" />
-                <div class="info">
-                    <div class="desc"><p> 余潇潇春装2018新款简单大方轻盈网纱连衣裙丝滑… 颜色分类雅致灰-预售15个工作日,尺码M</p></div>
-                    <div class="price">
-                        <p>￥50</p>
-                    </div>
-                    <hr style="margin:5px 0 5px 0" />
-                    <div class="saler">
-                        <img src="http://img.alicdn.com/bao/uploaded/i2/O1CN01JFIFk01OKgddI0Qnr_!!0-fleamarket.jpg" />
-                        <p class="user-name" style="display:inline">七***6</p>
-                    </div>
-                </div>
-            </div>
-            <div class="card">
-                <img src="~/Content/img/ex1.jpg" />
-                <div class="info">
-                    <div class="desc"><p> 余潇潇春装2018新款简单大方轻盈网纱连衣裙丝滑… 颜色分类雅致灰-预售15个工作日,尺码M</p></div>
-                    <div class="price">
-                        <p>￥50</p>
-                    </div>
-                    <hr style="margin:5px 0 5px 0" />
-                    <div class="saler">
-                        <img src="http://img.alicdn.com/bao/uploaded/i2/O1CN01JFIFk01OKgddI0Qnr_!!0-fleamarket.jpg" />
-                        <p class="user-name" style="display:inline">七***6</p>
+                    <div class="card">
+                        <img src="~/Content/img/ex1.jpg" />
+                        <div class="info">
+                            <div class="desc"><p> 余潇潇春装2018新款简单大方轻盈网纱连衣裙丝滑… 颜色分类雅致灰-预售15个工作日,尺码M</p></div>
+                            <div class="price">
+                                <p>￥50</p>
+                            </div>
+                            <hr style="margin:5px 0 5px 0" />
+                            <div class="saler">
+                                <img src="http://img.alicdn.com/bao/uploaded/i2/O1CN01JFIFk01OKgddI0Qnr_!!0-fleamarket.jpg" />
+                                <p class="user-name" style="display:inline">七***6</p>
+                            </div>
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div class="card">
-                <img src="~/Content/img/ex1.jpg" />
-                <div class="info">
-                    <div class="desc"><p> 余潇潇春装2018新款简单大方轻盈网纱连衣裙丝滑… 颜色分类雅致灰-预售15个工作日,尺码M</p></div>
-                    <div class="price">
-                        <p>￥50</p>
+                <div class="row">
+                    <div class="card">
+                        <img src="~/Content/img/ex1.jpg" />
+                        <div class="info">
+                            <div class="desc"><p> 余潇潇春装2018新款简单大方轻盈网纱连衣裙丝滑… 颜色分类雅致灰-预售15个工作日,尺码M</p></div>
+                            <div class="price">
+                                <p>￥50</p>
+                            </div>
+                            <hr style="margin:5px 0 5px 0" />
+                            <div class="saler">
+                                <img src="http://img.alicdn.com/bao/uploaded/i2/O1CN01JFIFk01OKgddI0Qnr_!!0-fleamarket.jpg" />
+                                <p class="user-name" style="display:inline">七***6</p>
+                            </div>
+                        </div>
                     </div>
-                    <hr style="margin:5px 0 5px 0" />
-                    <div class="saler">
-                        <img src="http://img.alicdn.com/bao/uploaded/i2/O1CN01JFIFk01OKgddI0Qnr_!!0-fleamarket.jpg" />
-                        <p class="user-name" style="display:inline">七***6</p>
+                    <div class="card">
+                        <img src="~/Content/img/ex1.jpg" />
+                        <div class="info">
+                            <div class="desc"><p> 余潇潇春装2018新款简单大方轻盈网纱连衣裙丝滑… 颜色分类雅致灰-预售15个工作日,尺码M</p></div>
+                            <div class="price">
+                                <p>￥50</p>
+                            </div>
+                            <hr style="margin:5px 0 5px 0" />
+                            <div class="saler">
+                                <img src="http://img.alicdn.com/bao/uploaded/i2/O1CN01JFIFk01OKgddI0Qnr_!!0-fleamarket.jpg" />
+                                <p class="user-name" style="display:inline">七***6</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <img src="~/Content/img/ex1.jpg" />
+                        <div class="info">
+                            <div class="desc"><p> 余潇潇春装2018新款简单大方轻盈网纱连衣裙丝滑… 颜色分类雅致灰-预售15个工作日,尺码M</p></div>
+                            <div class="price">
+                                <p>￥50</p>
+                            </div>
+                            <hr style="margin:5px 0 5px 0" />
+                            <div class="saler">
+                                <img src="http://img.alicdn.com/bao/uploaded/i2/O1CN01JFIFk01OKgddI0Qnr_!!0-fleamarket.jpg" />
+                                <p class="user-name" style="display:inline">七***6</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <img src="~/Content/img/ex1.jpg" />
+                        <div class="info">
+                            <div class="desc"><p> 余潇潇春装2018新款简单大方轻盈网纱连衣裙丝滑… 颜色分类雅致灰-预售15个工作日,尺码M</p></div>
+                            <div class="price">
+                                <p>￥50</p>
+                            </div>
+                            <hr style="margin:5px 0 5px 0" />
+                            <div class="saler">
+                                <img src="http://img.alicdn.com/bao/uploaded/i2/O1CN01JFIFk01OKgddI0Qnr_!!0-fleamarket.jpg" />
+                                <p class="user-name" style="display:inline">七***6</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <img src="~/Content/img/ex1.jpg" />
+                        <div class="info">
+                            <div class="desc"><p> 余潇潇春装2018新款简单大方轻盈网纱连衣裙丝滑… 颜色分类雅致灰-预售15个工作日,尺码M</p></div>
+                            <div class="price">
+                                <p>￥50</p>
+                            </div>
+                            <hr style="margin:5px 0 5px 0" />
+                            <div class="saler">
+                                <img src="http://img.alicdn.com/bao/uploaded/i2/O1CN01JFIFk01OKgddI0Qnr_!!0-fleamarket.jpg" />
+                                <p class="user-name" style="display:inline">七***6</p>
+                            </div>
+                        </div>
                     </div>
                 </div>
+                <div class="row">
+                    <div class="card">
+                        <img src="~/Content/img/ex1.jpg" />
+                        <div class="info">
+                            <div class="desc"><p> 余潇潇春装2018新款简单大方轻盈网纱连衣裙丝滑… 颜色分类雅致灰-预售15个工作日,尺码M</p></div>
+                            <div class="price">
+                                <p>￥50</p>
+                            </div>
+                            <hr style="margin:5px 0 5px 0" />
+                            <div class="saler">
+                                <img src="http://img.alicdn.com/bao/uploaded/i2/O1CN01JFIFk01OKgddI0Qnr_!!0-fleamarket.jpg" />
+                                <p class="user-name" style="display:inline">七***6</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <img src="~/Content/img/ex1.jpg" />
+                        <div class="info">
+                            <div class="desc"><p> 余潇潇春装2018新款简单大方轻盈网纱连衣裙丝滑… 颜色分类雅致灰-预售15个工作日,尺码M</p></div>
+                            <div class="price">
+                                <p>￥50</p>
+                            </div>
+                            <hr style="margin:5px 0 5px 0" />
+                            <div class="saler">
+                                <img src="http://img.alicdn.com/bao/uploaded/i2/O1CN01JFIFk01OKgddI0Qnr_!!0-fleamarket.jpg" />
+                                <p class="user-name" style="display:inline">七***6</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <img src="~/Content/img/ex1.jpg" />
+                        <div class="info">
+                            <div class="desc"><p> 余潇潇春装2018新款简单大方轻盈网纱连衣裙丝滑… 颜色分类雅致灰-预售15个工作日,尺码M</p></div>
+                            <div class="price">
+                                <p>￥50</p>
+                            </div>
+                            <hr style="margin:5px 0 5px 0" />
+                            <div class="saler">
+                                <img src="http://img.alicdn.com/bao/uploaded/i2/O1CN01JFIFk01OKgddI0Qnr_!!0-fleamarket.jpg" />
+                                <p class="user-name" style="display:inline">七***6</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <img src="~/Content/img/ex1.jpg" />
+                        <div class="info">
+                            <div class="desc"><p> 余潇潇春装2018新款简单大方轻盈网纱连衣裙丝滑… 颜色分类雅致灰-预售15个工作日,尺码M</p></div>
+                            <div class="price">
+                                <p>￥50</p>
+                            </div>
+                            <hr style="margin:5px 0 5px 0" />
+                            <div class="saler">
+                                <img src="http://img.alicdn.com/bao/uploaded/i2/O1CN01JFIFk01OKgddI0Qnr_!!0-fleamarket.jpg" />
+                                <p class="user-name" style="display:inline">七***6</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <img src="~/Content/img/ex1.jpg" />
+                        <div class="info">
+                            <div class="desc"><p> 余潇潇春装2018新款简单大方轻盈网纱连衣裙丝滑… 颜色分类雅致灰-预售15个工作日,尺码M</p></div>
+                            <div class="price">
+                                <p>￥50</p>
+                            </div>
+                            <hr style="margin:5px 0 5px 0" />
+                            <div class="saler">
+                                <img src="http://img.alicdn.com/bao/uploaded/i2/O1CN01JFIFk01OKgddI0Qnr_!!0-fleamarket.jpg" />
+                                <p class="user-name" style="display:inline">七***6</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>*@
             </div>
-            <div class="card">
-                <img src="~/Content/img/ex1.jpg" />
-                <div class="info">
-                    <div class="desc"><p> 余潇潇春装2018新款简单大方轻盈网纱连衣裙丝滑… 颜色分类雅致灰-预售15个工作日,尺码M</p></div>
-                    <div class="price">
-                        <p>￥50</p>
-                    </div>
-                    <hr style="margin:5px 0 5px 0" />
-                    <div class="saler">
-                        <img src="http://img.alicdn.com/bao/uploaded/i2/O1CN01JFIFk01OKgddI0Qnr_!!0-fleamarket.jpg" />
-                        <p class="user-name" style="display:inline">七***6</p>
-                    </div>
-                </div>
-            </div>
-            <div class="card">
-                <img src="~/Content/img/ex1.jpg" />
-                <div class="info">
-                    <div class="desc"><p> 余潇潇春装2018新款简单大方轻盈网纱连衣裙丝滑… 颜色分类雅致灰-预售15个工作日,尺码M</p></div>
-                    <div class="price">
-                        <p>￥50</p>
-                    </div>
-                    <hr style="margin:5px 0 5px 0" />
-                    <div class="saler">
-                        <img src="http://img.alicdn.com/bao/uploaded/i2/O1CN01JFIFk01OKgddI0Qnr_!!0-fleamarket.jpg" />
-                        <p class="user-name" style="display:inline">七***6</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
 
-</div>
+        </div>

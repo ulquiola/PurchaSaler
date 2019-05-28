@@ -39,10 +39,11 @@ namespace PurchaSalerUI.Controllers
         [HttpPost]
         public ActionResult AddGoods(Good goods)
         {
+            //上传图片
             HttpPostedFileBase image = Request.Files["image"];
             string SavePath = Server.MapPath("~/Content/img/imageGood/");
-            string imageName = DateTime.Now.ToFileTime().ToString()+image.FileName;
-            image.SaveAs(Path.Combine(SavePath, imageName));
+            string imageName = DateTime.Now.ToFileTime().ToString()+image.FileName;//获取图片名
+            image.SaveAs(Path.Combine(SavePath, imageName));//储存图片到物理路径
 
             goods.GoodPhoto = "/Content/img/imageGood/"+imageName;
             goods.ShopID = Convert.ToInt32(Session["ShopID"]);
