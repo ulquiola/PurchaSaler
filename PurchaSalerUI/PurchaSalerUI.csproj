@@ -153,7 +153,7 @@
     <Content Include="Content\img\opera2.png" />
     <Content Include="Content\img\opera3.png" />
     <Content Include="Content\img\opera4.png" />
-    <Content Include="Content\PagedList.css" />
+    <Content Include="Content\css\PagedList.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />

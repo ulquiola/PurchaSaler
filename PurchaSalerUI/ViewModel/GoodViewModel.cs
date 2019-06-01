@@ -8,6 +8,7 @@ namespace PurchaSalerUI.ViewModel
 {
     public class GoodViewModel
     {
+        public string GoodTitle { get; set; }
         public string GoodPhoto { get; set; }
         public string GoodDescribe { get; set; }
         public float Price { get; set; }
