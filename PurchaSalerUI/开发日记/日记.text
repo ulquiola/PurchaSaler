@@ -92,3 +92,18 @@
                 }
                 throw;
             }
+
+9、Linq多表查询以及ViewModel赋值
+	 var data = (from a in db.Goods
+                         join b in db.Shops on a.ShopID equals b.ShopID
+                         join c in db.Users on b.UserID equals c.UserID
+                         select new GoodViewModel()
+                         {
+                            GoodPhoto=a.GoodPhoto,
+                            GoodDescribe=a.GoodDescribe,
+                            Price=(float)a.Price,
+                            ShopName=b.ShopName,
+                            Avatar=c.Avatar,
+                            UserName=c.UserName
+                         }).ToList();
+            return View(data);

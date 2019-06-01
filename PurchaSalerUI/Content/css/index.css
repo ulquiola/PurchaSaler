@@ -206,3 +206,7 @@
     width: 20px;
     height: 20px;
 }
+
+.info .saler .shopname {
+    float:right;
+}
