@@ -60,7 +60,18 @@
     </div>
 
     <div class="category">
-        <a href="" class="item">生活百货</a>
+        @Html.ActionLink("生活百货", "Index", "Home", new { CategoryID = 1 }, new { @class = "item" })
+        @Html.ActionLink("手机数码", "Index", "Home", new { CategoryID = 2 }, new { @class = "item" })
+        @Html.ActionLink("书籍", "Index", "Home", new { CategoryID = 3 }, new { @class = "item" })
+        @Html.ActionLink("男装", "Index", "Home", new { CategoryID = 4 }, new { @class = "item" })
+        @Html.ActionLink("女装", "Index", "Home", new { CategoryID = 5 }, new { @class = "item" })
+        @Html.ActionLink("服饰配件", "Index", "Home", new { CategoryID = 6 }, new { @class = "item" })
+        @Html.ActionLink("电器", "Index", "Home", new { CategoryID = 7 }, new { @class = "item" })
+        @Html.ActionLink("美妆", "Index", "Home", new { CategoryID = 8 }, new { @class = "item" })
+        @Html.ActionLink("游戏装备", "Index", "Home", new { CategoryID = 9 }, new { @class = "item" })
+        @Html.ActionLink("游戏交易", "Index", "Home", new { CategoryID = 10 }, new { @class = "item" })
+        @Html.ActionLink("水果零食", "Index", "Home", new { CategoryID = 11 }, new { @class = "item" })
+        @*<a href="" class="item">生活百货</a>
         <a href="" class="item">手机数码</a>
         <a href="" class="item">书籍</a>
         <a href="" class="item">男装</a>
@@ -70,7 +81,7 @@
         <a href="" class="item">美妆</a>
         <a href="" class="item">游戏装备</a>
         <a href="" class="item">游戏交易</a>
-        <a href="" class="item">水果零食</a>
+        <a href="" class="item">水果零食</a>*@
     </div>
 
     <div class="goods">

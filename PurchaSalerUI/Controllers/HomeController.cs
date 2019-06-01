@@ -4,6 +4,7 @@ using System.Web.Mvc;
 using Models;
 using PurchaSalerUI.ViewModel;
 using PagedList;
+using System;
 
 namespace PurchaSalerUI.Controllers
 {
@@ -16,7 +17,7 @@ namespace PurchaSalerUI.Controllers
 
         PurchaSalerEntities db = new PurchaSalerEntities();
 
-        public ActionResult Index(string currentFilter,string searchString,int?page)
+        public ActionResult Index(int? CategoryID, string currentFilter, string searchString, int? page)
         {
             var data = ( from a in db.Goods
                          join b in db.Shops on a.ShopID equals b.ShopID
@@ -25,12 +26,52 @@ namespace PurchaSalerUI.Controllers
                          {
                             GoodTitle=a.GoodTitle,
                             GoodPhoto=a.GoodPhoto,
+                            CategoryID = (int)a.CategoryID,
                             GoodDescribe=a.GoodDescribe,
                             Price=(float)a.Price,
                             ShopName=b.ShopName,
                             Avatar=c.Avatar,
                             UserName=c.UserName
                          });
+            if (CategoryID>0)
+            {
+                switch (CategoryID)
+                {
+                    case 1:
+                        data = data.Where(a => a.CategoryID == 1);
+                        break;
+                    case 2:
+                        data = data.Where(a => a.CategoryID == 2);
+                        break;
+                    case 3:
+                        data = data.Where(a => a.CategoryID == 3);
+                        break;
+                    case 4:
+                        data = data.Where(a => a.CategoryID == 4);
+                        break;
+                    case 5:
+                        data = data.Where(a => a.CategoryID == 5);
+                        break;
+                    case 6:
+                        data = data.Where(a => a.CategoryID == 6);
+                        break;
+                    case 7:
+                        data = data.Where(a => a.CategoryID == 7);
+                        break;
+                    case 8:
+                        data = data.Where(a => a.CategoryID == 8);
+                        break;
+                    case 9:
+                        data = data.Where(a => a.CategoryID == 9);
+                        break;
+                    case 10:
+                        data = data.Where(a => a.CategoryID == 10);
+                        break;
+                    case 11:
+                        data = data.Where(a => a.CategoryID == 11);
+                        break;
+                }
+            }
             if (searchString != null)
             {
                 page = 1;
@@ -49,13 +90,11 @@ namespace PurchaSalerUI.Controllers
             }
             
             int Size = 20;//一页显示商品的个数
-            //ToPagedList 方法需要一个页码。 两个问号表示null 合并运算符。
-            //NULL 合并运算符为可为 NULL 的类型定义默认值；
-            //表达式(page ?? 1) 表示如果 page 有值，则返回该值，如果 page 为 NULL，则返回 1。
-            int pageNumber = (page ?? 1);
-            return View(data.OrderBy(d=>d.GoodTitle).ToPagedList(pageNumber, Size));
+            int pageNumber = (page ?? 1);//表达式(page ?? 1) 表示如果 page 有值，则返回该值，如果 page 为 NULL，则返回 1。
+            return View(data.OrderBy(d => d.GoodTitle).ToPagedList(pageNumber, Size));            
+
         }
-        
+
         public ActionResult About()
         {
             ViewBag.Message = "Your application description page.";

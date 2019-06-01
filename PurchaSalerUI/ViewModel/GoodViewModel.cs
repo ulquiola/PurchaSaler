@@ -11,6 +11,7 @@ namespace PurchaSalerUI.ViewModel
         public string GoodTitle { get; set; }
         public string GoodPhoto { get; set; }
         public string GoodDescribe { get; set; }
+        public int CategoryID { get; set; }
         public float Price { get; set; }
         public string ShopName { get; set; }
         public string Avatar { get; set; }
