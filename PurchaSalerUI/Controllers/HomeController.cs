@@ -88,12 +88,13 @@ namespace PurchaSalerUI.Controllers
                 data = data.Where(s => s.GoodTitle.Contains(searchString)
                                        || s.GoodDescribe.Contains(searchString));
             }
-            
+
+            data = data.OrderBy(d => d.GoodTitle);//按商品名升序排列
             int Size = 20;//一页显示商品的个数
             int pageNumber = (page ?? 1);//表达式(page ?? 1) 表示如果 page 有值，则返回该值，如果 page 为 NULL，则返回 1。
-            return View(data.OrderBy(d => d.GoodTitle).ToPagedList(pageNumber, Size));            
-
+            return View(data.ToPagedList(pageNumber, Size));
         }
+
 
         public ActionResult About()
         {
