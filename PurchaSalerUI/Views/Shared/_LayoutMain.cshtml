@@ -9,6 +9,8 @@
     <meta http-equiv="Expires" content="0">
     <title>PurchaSaler置闲交易网</title>
     <link href="~/Content/css/bootstrap.min.css" rel="stylesheet" />
+    <script src="~/Scripts/jquery-3.3.1.js"></script>
+    <script src="~/Scripts/bootstrap.min.js"></script>
     @RenderSection("head", false)
     <style>
         * {
@@ -27,16 +29,43 @@
             background: #f2f2f2
         }
 
-
-        .top-header {
-            background: #f5f5f5;
-            padding: 0 60px 0 60px;
+        .nav{
+            padding:0 60px 0 60px;
         }
 
-            .top-header a {
-                padding: 0 20px 0 20px;
-                text-decoration: none
-            }
+        .nav ul li a:hover
+        {
+            color: #ff0036;
+
+        }
+        .nav a{
+            padding: 0 20px 0 20px;
+            text-decoration: none
+        }
+
+        /*---------dropdown开始*/
+        .myDrop li{
+            position:relative;
+            display:inline-block;
+        } 
+        .myDrop li ul{
+            display:none;
+        }
+        .myDrop li:hover > ul{
+            display:block;
+        }
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #f9f2f2;
+            min-width: 130px;
+            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+            padding: 12px 16px;
+            z-index: 1;
+            text-align:left;
+        }
+        
+        /*---------dropdown结束*/
 
         .footer {
             width: 100%;
@@ -44,30 +73,29 @@
             text-align: center;
             margin-bottom: 0;
         }
+        .footer a:hover{color: #ff0036;}
 
         .footer_copyright {
             padding: 50px 30px;
         }
     </style>
+    
+    
 </head>
 <body>
-    <div class="top-header">
-        <div class="row">
-            <div class="col-lg-4">
-                @*<a class="item" href="/User/Login">亲，请登录</a>*@
-                @Html.Partial("_PartialLogin")
-                <a class="item" href="/User/Register">免费注册</a>
-            </div>
-            <div class="col-lg-8">
-                <a class="item" href="/Home/index">首页</a>
-                <a class="item" href="#">订单</a>
-                <a class="item" href="#">购物车</a>
-                <a class="item" href="#">收藏夹</a>
-                <a class="item" href="#">商品分类</a>
-                <a class="item" href="#">联系客服</a>
-                <a class="item" href="#">网站导航</a>
-            </div>
-        </div>
+    <div class="nav navbar">
+        <ul class="nav left-bar myDrop">
+            @Html.Partial("_PartialLogin")
+        </ul>
+        <ul class="nav right-bar">
+            <li><a href="/Home/index">首页</a></li>
+            <li><a href="#">订单</a></li>
+            <li><a href="#">购物车</a></li>
+            <li><a href="#">收藏夹</a></li>
+            <li><a href="#">商品分类</a></li>
+            <li><a href="#">联系客服</a></li>
+            <li><a href="#">网站导航</a></li>
+        </ul>
     </div>
 
     <div class="body-content">

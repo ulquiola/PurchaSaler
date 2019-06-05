@@ -51,7 +51,12 @@ namespace PurchaSalerUI.Controllers
         public ActionResult Logout()
         {
             Session.Clear();
-            return RedirectToAction("Index", "User");
+            return RedirectToAction("Index", "Home");
+        }
+
+        public ActionResult UserCenter()
+        {
+            return View();
         }
     }
 }

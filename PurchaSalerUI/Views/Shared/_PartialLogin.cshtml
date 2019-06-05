@@ -1,9 +1,16 @@
 ﻿@if (Session["UserName"] != null)
 {
-    <a class="item" href="#" style="color:#f22e00">@Session["UserName"]</a>
+    <li>
+        <a href="#" style="color:#f22e00">@Session["UserName"]</a>
+        <ul class="nav dropdown-content">
+            <li><a href="/User/UserCenter">个人中心</a></li>
+            <li><a href="/User/Logout">注销</a></li>
+        </ul>
+    </li>
     
 }
 else
 {
-    <a class="item" href="/User/Login">亲，请登录</a>
+    <li><a href="/User/Login">亲，请登录</a></li>
+    <li><a href="/User/Register">免费注册</a></li>
 }
