@@ -13,6 +13,10 @@ namespace BLL
     {
         private IGoods igooder = DataAccess.CreatreGoods();
 
+        public IEnumerable<GoodsInfo> GetGoodsInfos()
+        {
+            return igooder.GetGoodsInfos();
+        }
         public void AddGoods(Good goods)
         {
             igooder.AddGoods(goods);

@@ -7,29 +7,9 @@
     <link href="~/Content/css/usercenter.css" rel="stylesheet" />
 }
 
-
-
-<div class="uc-header-bg">
-    <div class="uc-header wrapper">
-        <div class="back-home"><a href="">返回商城首页</a></div>
-        <ul class="uc-nav">
-            <li><a href="index.html">首页</a></li>
-            <li class="toggle">
-                <a>账号设置<span class="caret"></span></a>
-                <div class="toggle-cont">
-                    <a href="uc-account.html">个人信息</a>
-                    <a href="uc-safe.html">安全设置</a>
-                    <a href="uc-address.html">收货地址</a>
-                </div>
-            </li>
-            <li><a href="uc-msg.html">消息中心</a></li>
-        </ul>
-    </div>
-</div>
-
 <div class="wrapper uc-router">
     <ul>
-        <li><a href="index.html">首页</a></li>
+        <li><a href="/Home/Index">首页</a></li>
         <li><span class="divider"></span></li>
         <li><span>个人中心</span></li>
     </ul>
@@ -39,24 +19,28 @@
     <div class="uc-main clearfix">
         <div class="uc-aside">
             <div class="uc-menu">
+
                 <div class="tit">订单中心</div>
                 <ul class="sublist">
                     <li><a href="uc-order.html">我的订单</a></li>
-                    <li><a class="active" href="">我的收藏</a></li>
+                    <li><a href="">我的收藏</a></li>
                     <li><a href="uc-footprint.html">浏览历史</a></li>
                 </ul>
+
                 <div class="tit">客户服务</div>
                 <ul class="sublist">
                     <li><a href="">取消订单记录</a></li>
                     <li><a href="uc-refund.html">退款/退货</a></li>
                 </ul>
+
                 <div class="tit">账户中心</div>
                 <ul class="sublist">
-                    <li><a href="">账户信息</a></li>
+                    <li><a class="active" href="">账户信息</a></li>
                     <li><a href="">账户安全</a></li>
                     <li><a href="">消费记录</a></li>
                     <li><a href="uc-address.html">收货地址</a></li>
                 </ul>
+
                 <div class="tit">消息中心</div>
                 <ul class="sublist">
                     <li><a href="">商品评价</a></li>
@@ -66,48 +50,68 @@
         </div>
         <div class="uc-content">
             <div class="uc-panel">
-                <div class="uc-bigtit">我的收藏</div>
+                <div class="uc-bigtit">个人信息</div>
                 <div class="uc-panel-bd">
-                    <div class="uc-tabs">
-                        <a class="item active" href="uc-fav.html">我收藏的商品</a>
-                        <a class="item" href="uc-fav-shop.html">我收藏的店铺</a>
-                    </div>
-                    <table class="uc-table">
-                        <tr class="hd">
-                            <td width="16" class="check"><input type="checkbox" /></td>
-                            <td widtd="360" class="align-left">
-                                商家名称
-                            </td>
-                            <td width="100">价格</td>
-                            <td width="100">库存情况</td>
-                            <td width="120">操作</td>
-                            <td><a href="" class="del iconfont icon-shanchu"></a></td>
-                        </tr>
-                        <tr class="fav-goods">
-                            <td class="check"><input type="checkbox" /></td>
-                            <td class="item">
-                                <img src="" alt="" /><span class="name">小米短袖T恤 五彩换</span>
-                            </td>
-                            <td><span class="text-theme fwb">298元</span></td>
-                            <td>现货</td>
-                            <td><a href="" class="ui-btn-theme uc-btn-md mb5">加入购物车</a><br /><a class="text-muted" href="">取消收藏</a></td>
-                            <td><a href="" class="text-warning">删除</a></td>
-                        </tr>
-
-                    </table>
-
-                    <div class="pages">
-                        <a class="page prev" href="">上一页</a>
-                        <a class="page" href="">1</a>
-                        <span class="cur-page">2</span>
-                        <a class="page" href="">3</a>
-                        <a class="page" href="">4</a>
-                        <i class="page-split">...</i>
-                        <a class="page" href="">71</a>
-                        <a class="page next" href="">下一页</a>
+                    <div class="account-info clearfix">
+                        <div class="col-headpic">
+                            <div class="pic-wrap">
+                                <div class="label">头像</div>
+                                <div class="picbox">
+                                    <img src="img/uc/headpic.jpg" alt="" />
+                                </div>
+                                <a class="edit" href="">修改头像</a>
+                            </div>
+                        </div>
+                        <div class="col-userinfo">
+                            <div class="control-group">
+                                <div class="hd">真实姓名：</div>
+                                <div class="bd"><input class="ui-txtin" type="text" name="" value="天使溜溜了" /></div>
+                            </div>
+                            <div class="control-group">
+                                <div class="hd">昵称：</div>
+                                <div class="bd"><input class="ui-txtin" type="text" name="" value="天使溜溜了" /></div>
+                            </div>
+                            <div class="control-group">
+                                <div class="hd">生日：</div>
+                                <div class="bd"><input class="ui-txtin" type="text" name="" id="birthday" /></div>
+                            </div>
+                            <div class="control-group">
+                                <div class="hd">性别：</div>
+                                <div class="bd">
+                                    <label class="check"><input type="radio" name="sex" />男</label>
+                                    <label class="check ml25"><input type="radio" name="sex" />女</label>
+                                </div>
+                            </div>
+                            <div class="control-group">
+                                <div class="hd">电话：</div>
+                                <div class="bd"><input class="ui-txtin" type="text" name="" /></div>
+                            </div>
+                            <div class="control-group">
+                                <div class="hd">所在地：</div>
+                                <div class="bd">
+                                    <select name="" class="ui-txtin" style="width: 100px;"></select>
+                                </div>
+                            </div>
+                            <div class="control-group">
+                                <div class="hd">详细地址：</div>
+                                <div class="bd"><input class="ui-txtin" type="text" name="" /></div>
+                            </div>
+                            <div class="control-group">
+                                <div class="hd">邮箱：</div>
+                                <div class="bd">
+                                    <div class="text-black">12345677899@qq.com <a class="edit-btn" href="">修改</a></div>
+                                </div>
+                            </div>
+                            <div class="control-submit">
+                                <input class="ui-btn-theme submit" type="submit" value="确认" />
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
+
+
+
     </div>
 </div>

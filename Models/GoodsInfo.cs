@@ -1,12 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Web;
-using Models;
+using System.Text;
+using System.Threading.Tasks;
 
-namespace PurchaSalerUI.ViewModel
+namespace Models
 {
-    public class GoodInfo
+    public class GoodsInfo
     {
         public string GoodTitle { get; set; }
         public string GoodPhoto { get; set; }
@@ -17,6 +17,5 @@ namespace PurchaSalerUI.ViewModel
         public string ShopName { get; set; }
         public string Avatar { get; set; }
         public string UserName { get; set; }
-
     }
 }

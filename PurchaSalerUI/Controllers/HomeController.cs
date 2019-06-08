@@ -2,9 +2,8 @@
 using System.Linq;
 using System.Web.Mvc;
 using Models;
-using PurchaSalerUI.ViewModel;
 using PagedList;
-using System;
+using BLL;
 
 namespace PurchaSalerUI.Controllers
 {
@@ -14,64 +13,12 @@ namespace PurchaSalerUI.Controllers
     /// </summary>
     public class HomeController : Controller
     {
-
         PurchaSalerEntities db = new PurchaSalerEntities();
-
-        public ActionResult Index(int? CategoryID, string currentFilter, string searchString, int? page)
+        GoodsManager goodsManager = new GoodsManager();
+        public ActionResult Index(string sortOrder,string currentFilter,string searchString,int? page)
         {
-            var data = ( from a in db.Goods
-                         join b in db.Shops on a.ShopID equals b.ShopID
-                         join c in db.Users on b.UserID equals c.UserID
-                         select new GoodViewModel()
-                         {
-                            GoodTitle=a.GoodTitle,
-                            GoodPhoto=a.GoodPhoto,
-                            CategoryID = (int)a.CategoryID,
-                            GoodDescribe=a.GoodDescribe,
-                            Price=(float)a.Price,
-                            ShopName=b.ShopName,
-                            Avatar=c.Avatar,
-                            UserName=c.UserName
-                         });
-            if (CategoryID>0)
-            {
-                switch (CategoryID)
-                {
-                    case 1:
-                        data = data.Where(a => a.CategoryID == 1);
-                        break;
-                    case 2:
-                        data = data.Where(a => a.CategoryID == 2);
-                        break;
-                    case 3:
-                        data = data.Where(a => a.CategoryID == 3);
-                        break;
-                    case 4:
-                        data = data.Where(a => a.CategoryID == 4);
-                        break;
-                    case 5:
-                        data = data.Where(a => a.CategoryID == 5);
-                        break;
-                    case 6:
-                        data = data.Where(a => a.CategoryID == 6);
-                        break;
-                    case 7:
-                        data = data.Where(a => a.CategoryID == 7);
-                        break;
-                    case 8:
-                        data = data.Where(a => a.CategoryID == 8);
-                        break;
-                    case 9:
-                        data = data.Where(a => a.CategoryID == 9);
-                        break;
-                    case 10:
-                        data = data.Where(a => a.CategoryID == 10);
-                        break;
-                    case 11:
-                        data = data.Where(a => a.CategoryID == 11);
-                        break;
-                }
-            }
+            ViewBag.CategoryParm = sortOrder;
+            var infos = goodsManager.GetGoodsInfos();
             if (searchString != null)
             {
                 page = 1;
@@ -80,22 +27,60 @@ namespace PurchaSalerUI.Controllers
             {
                 searchString = currentFilter;
             }
-
             ViewBag.CurrentFilter = searchString;
-
             if (!string.IsNullOrEmpty(searchString))
             {
-                data = data.Where(s => s.GoodTitle.Contains(searchString)
-                                       || s.GoodDescribe.Contains(searchString));
+                infos = infos.Where(g => g.GoodTitle.Contains(searchString)
+                                       || g.GoodDescribe.Contains(searchString));
             }
-
-            data = data.OrderBy(d => d.GoodTitle);//按商品名升序排列
+            ViewBag.CurrentSort = sortOrder;
+            switch (sortOrder)
+            {
+                case "生活百货":
+                    infos = infos.OrderBy(g => g.GoodTitle).Where(g => g.CategoryID == 1);
+                    break;
+                case "手机数码":
+                    infos = infos.OrderBy(g => g.GoodTitle).Where(g => g.CategoryID == 2);
+                    break;
+                case "书籍":
+                    infos = infos.OrderBy(g => g.GoodTitle).Where(g => g.CategoryID == 3);
+                    break;
+                case "男装":
+                    infos = infos.OrderBy(g => g.GoodTitle).Where(g => g.CategoryID == 4);
+                    break;
+                case "女装":
+                    infos = infos.OrderBy(g => g.GoodTitle).Where(g => g.CategoryID == 5);
+                    break;
+                case "服饰配件":
+                    infos = infos.OrderBy(g => g.GoodTitle).Where(g => g.CategoryID == 6);
+                    break;
+                case "电器":
+                    infos = infos.OrderBy(g => g.GoodTitle).Where(g => g.CategoryID == 7);
+                    break;
+                case "美妆":
+                    infos = infos.OrderBy(g => g.GoodTitle).Where(g => g.CategoryID == 8);
+                    break;
+                case "游戏装备":
+                    infos = infos.OrderBy(g => g.GoodTitle).Where(g => g.CategoryID == 9);
+                    break;
+                case "游戏交易":
+                    infos = infos.OrderBy(g => g.GoodTitle).Where(g => g.CategoryID == 10);
+                    break;
+                case "水果零食":
+                    infos = infos.OrderBy(g => g.GoodTitle).Where(g => g.CategoryID == 11);
+                    break;
+                default:  
+                    infos = infos.OrderBy(g => g.GoodTitle);
+                    break;
+            }
             int Size = 20;//一页显示商品的个数
             int pageNumber = (page ?? 1);//表达式(page ?? 1) 表示如果 page 有值，则返回该值，如果 page 为 NULL，则返回 1。
-            return View(data.ToPagedList(pageNumber, Size));
+            return View(infos.ToPagedList(pageNumber, Size));
         }
+        
 
 
+        
         public ActionResult About()
         {
             ViewBag.Message = "Your application description page.";

@@ -1,10 +1,8 @@
-﻿@*@model IEnumerable<PurchaSalerUI.ViewModel.GoodViewModel>*@
-@model PagedList.IPagedList<PurchaSalerUI.ViewModel.GoodViewModel>
+﻿@model PagedList.IPagedList<Models.GoodsInfo>
 @using PagedList.Mvc
 @{
     ViewBag.Title = "Home Page";
 }
-
 @section head{
     <link href="~/Content/css/index.css" rel="stylesheet" />
     <link href="~/Content/css/PagedList.css" rel="stylesheet" />
@@ -26,11 +24,6 @@
             </div>
         </div>
 
-        @*<div class="area-avatar">
-            <img src="~/Content/img/default_avatar.png" class="avatar" />
-            <div class="loginbt"><a href="/User/Login" style="text-decoration:none">请登录</a></div>
-            <div><a href="#" style="text-decoration:none">免费注册</a></div>
-        </div>*@
         @Html.Partial("_PartialAvatar")
 
     </div>
@@ -43,14 +36,11 @@
                 @using (Html.BeginForm())
                 {
                     <div class="search-bar">
-                        <input type="text" placeholder="请输入关键字搜索" name="SearchString" />
+                        <input type="text" placeholder="请输入关键字搜索" name="searchString" value=@ViewBag.CurrentFilter >
                         <button type="submit">搜索</button>
                     </div>
                 }
-                @*<div class="search-bar">
-                        <input type="text" placeholder="请输入关键字搜索" value="" />
-                        <button type="submit">搜索</button>
-                    </div>*@
+                
             </div>
             <div class="col-sm-4">
                 <img src="~/Content/img/add.png" style="width:56px;height:56px" />
@@ -60,32 +50,18 @@
     </div>
 
     <div class="category">
-        @*@foreach(var item in Model)
-        {
-            <a href="@Url.Action("","",new { })">@item.</a>
-        }*@
-        @Html.ActionLink("生活百货", "Index", "Home", new { CategoryID = 1 }, new { @class = "item" })
-        @Html.ActionLink("手机数码", "Index", "Home", new { CategoryID = 2 }, new { @class = "item" })
-        @Html.ActionLink("书籍", "Index", "Home", new { CategoryID = 3 }, new { @class = "item" })
-        @Html.ActionLink("男装", "Index", "Home", new { CategoryID = 4 }, new { @class = "item" })
-        @Html.ActionLink("女装", "Index", "Home", new { CategoryID = 5 }, new { @class = "item" })
-        @Html.ActionLink("服饰配件", "Index", "Home", new { CategoryID = 6 }, new { @class = "item" })
-        @Html.ActionLink("电器", "Index", "Home", new { CategoryID = 7 }, new { @class = "item" })
-        @Html.ActionLink("美妆", "Index", "Home", new { CategoryID = 8 }, new { @class = "item" })
-        @Html.ActionLink("游戏装备", "Index", "Home", new { CategoryID = 9 }, new { @class = "item" })
-        @Html.ActionLink("游戏交易", "Index", "Home", new { CategoryID = 10 }, new { @class = "item" })
-        @Html.ActionLink("水果零食", "Index", "Home", new { CategoryID = 11 }, new { @class = "item" })
-        @*<a href="" class="item">生活百货</a>
-            <a href="" class="item">手机数码</a>
-            <a href="" class="item">书籍</a>
-            <a href="" class="item">男装</a>
-            <a href="" class="item">女装</a>
-            <a href="" class="item">服饰配件</a>
-            <a href="" class="item">电器</a>
-            <a href="" class="item">美妆</a>
-            <a href="" class="item">游戏装备</a>
-            <a href="" class="item">游戏交易</a>
-            <a href="" class="item">水果零食</a>*@
+        @Html.ActionLink("生活百货", "Index", "Home", new { sortOrder=ViewBag.CategoryParm="生活百货", currentFilter=ViewBag.CurrentFilter }, new { @class = "item" })
+        @Html.ActionLink("手机数码", "Index", "Home", new { sortOrder = ViewBag.CategoryParm="手机数码", currentFilter=ViewBag.CurrentFilter }, new { @class = "item" })
+        @Html.ActionLink("书籍", "Index", "Home", new { sortOrder = ViewBag.CategoryParm="书籍", currentFilter=ViewBag.CurrentFilter }, new { @class = "item" })
+        @Html.ActionLink("男装", "Index", "Home", new { sortOrder = ViewBag.CategoryParm="男装", currentFilter=ViewBag.CurrentFilter }, new { @class = "item" })
+        @Html.ActionLink("女装", "Index", "Home", new { sortOrder=ViewBag.CategoryParm="女装", currentFilter=ViewBag.CurrentFilter }, new { @class = "item" })
+        @Html.ActionLink("服饰配件", "Index", "Home", new { sortOrder = ViewBag.CategoryParm="服饰配件", currentFilter=ViewBag.CurrentFilter }, new { @class = "item" })
+        @Html.ActionLink("电器", "Index", "Home", new { sortOrder = ViewBag.CategoryParm="电器", currentFilter=ViewBag.CurrentFilter }, new { @class = "item" })
+        @Html.ActionLink("美妆", "Index", "Home", new { sortOrder = ViewBag.CategoryParm="美妆", currentFilter=ViewBag.CurrentFilter }, new { @class = "item" })
+        @Html.ActionLink("游戏装备", "Index", "Home", new { sortOrder = ViewBag.CategoryParm="游戏装备", currentFilter=ViewBag.CurrentFilter }, new { @class = "item" })
+        @Html.ActionLink("游戏交易", "Index", "Home", new { sortOrder = ViewBag.CategoryParm="游戏交易", currentFilter=ViewBag.CurrentFilter  }, new { @class = "item" })
+        @Html.ActionLink("水果零食", "Index", "Home", new { sortOrder = ViewBag.CategoryParm="水果零食", currentFilter=ViewBag.CurrentFilter  }, new { @class = "item" })
+        
     </div>
 
     <div class="goods">
@@ -117,7 +93,7 @@
     共 @Model.PageCount 页，
     当前第 @Model.PageNumber 页
     @Html.PagedListPager(Model, Page => Url.Action("Index",
-    new { Page, currentFilter = ViewBag.CurrentFilter }),
+    new { Page,sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter}),
     new PagedListRenderOptions() { LinkToFirstPageFormat = "首页",
         LinkToNextPageFormat = "下一页", LinkToPreviousPageFormat = "上一页",
         LinkToLastPageFormat = "末页", DisplayItemSliceAndTotal = false,
