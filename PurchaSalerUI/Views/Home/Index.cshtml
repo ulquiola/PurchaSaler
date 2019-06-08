@@ -60,6 +60,10 @@
     </div>
 
     <div class="category">
+        @*@foreach(var item in Model)
+        {
+            <a href="@Url.Action("","",new { })">@item.</a>
+        }*@
         @Html.ActionLink("生活百货", "Index", "Home", new { CategoryID = 1 }, new { @class = "item" })
         @Html.ActionLink("手机数码", "Index", "Home", new { CategoryID = 2 }, new { @class = "item" })
         @Html.ActionLink("书籍", "Index", "Home", new { CategoryID = 3 }, new { @class = "item" })
@@ -72,16 +76,16 @@
         @Html.ActionLink("游戏交易", "Index", "Home", new { CategoryID = 10 }, new { @class = "item" })
         @Html.ActionLink("水果零食", "Index", "Home", new { CategoryID = 11 }, new { @class = "item" })
         @*<a href="" class="item">生活百货</a>
-        <a href="" class="item">手机数码</a>
-        <a href="" class="item">书籍</a>
-        <a href="" class="item">男装</a>
-        <a href="" class="item">女装</a>
-        <a href="" class="item">服饰配件</a>
-        <a href="" class="item">电器</a>
-        <a href="" class="item">美妆</a>
-        <a href="" class="item">游戏装备</a>
-        <a href="" class="item">游戏交易</a>
-        <a href="" class="item">水果零食</a>*@
+            <a href="" class="item">手机数码</a>
+            <a href="" class="item">书籍</a>
+            <a href="" class="item">男装</a>
+            <a href="" class="item">女装</a>
+            <a href="" class="item">服饰配件</a>
+            <a href="" class="item">电器</a>
+            <a href="" class="item">美妆</a>
+            <a href="" class="item">游戏装备</a>
+            <a href="" class="item">游戏交易</a>
+            <a href="" class="item">水果零食</a>*@
     </div>
 
     <div class="goods">
@@ -108,7 +112,16 @@
     </div>
 
     <br />
-    @Html.PagedListPager(Model, Page => Url.Action("Index", new {Page,currentFilter = ViewBag.CurrentFilter }))
+    共 @Model.TotalItemCount 条，
+    每页 @Model.PageSize 条，
+    共 @Model.PageCount 页，
+    当前第 @Model.PageNumber 页
+    @Html.PagedListPager(Model, Page => Url.Action("Index",
+    new { Page, currentFilter = ViewBag.CurrentFilter }),
+    new PagedListRenderOptions() { LinkToFirstPageFormat = "首页",
+        LinkToNextPageFormat = "下一页", LinkToPreviousPageFormat = "上一页",
+        LinkToLastPageFormat = "末页", DisplayItemSliceAndTotal = false,
+        MaximumPageNumbersToDisplay = 5 })
 
 
 </div>
