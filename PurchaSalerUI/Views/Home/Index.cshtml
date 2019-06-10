@@ -69,20 +69,22 @@
             @foreach (var item in Model)
             {
                 <div class="card">
-                    <img src="@item.GoodPhoto" />
-                    <div class="info">
-                        <div class="desc"><p>@item.GoodDescribe</p></div>
-                        <div class="price">
-                            <p>￥@item.Price</p>
+                        <a href="@Url.Action("GoodsDetails","Mall",new { GoodId=item.GoodId})">
+                            <img src="@item.GoodPhoto" />
+                        </a>
+                        <div class="info">
+                            <div class="desc"><p>@item.GoodDescribe</p></div>
+                            <div class="price">
+                                <p>￥@item.Price</p>
+                            </div>
+                            <hr style="margin:5px 0 5px 0" />
+                            <div class="saler">
+                                <img src="@item.Avatar" alt="头像" />
+                                <p class="user-name" style="display:inline">@item.UserName</p>
+                                <a href="#" class="shopname" style="display:inline">@item.ShopName</a>
+                            </div>
                         </div>
-                        <hr style="margin:5px 0 5px 0" />
-                        <div class="saler">
-                            <img src="@item.Avatar" alt="头像" />
-                            <p class="user-name" style="display:inline">@item.UserName</p>
-                            <a href="#" class="shopname" style="display:inline">@item.ShopName</a>
-                        </div>
-                    </div>
-                </div>
+</div>
             }
         </div>
     </div>

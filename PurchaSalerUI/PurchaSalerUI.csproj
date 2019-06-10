@@ -127,6 +127,7 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\GoodController.cs" />
+    <Compile Include="Controllers\MallController.cs" />
     <Compile Include="Controllers\ShopController.cs" />
     <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -204,6 +205,8 @@
     <Content Include="Views\User\Register.cshtml" />
     <Content Include="Views\Shop\AddShop.cshtml" />
     <Content Include="Views\User\UserCenter.cshtml" />
+    <Content Include="Views\Mall\GoodsDetails.cshtml" />
+    <Content Include="Views\Mall\ShopCart.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

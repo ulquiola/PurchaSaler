@@ -18,6 +18,7 @@ namespace DAL
                          join c in db.Users on b.UserID equals c.UserID
                          select new GoodsInfo
                          {
+                             GoodId=a.GoodID,
                              GoodTitle = a.GoodTitle,
                              GoodPhoto = a.GoodPhoto,
                              GoodDescribe = a.GoodDescribe,
@@ -30,6 +31,14 @@ namespace DAL
                          };
             return infos;
         }
+
+        public Good GetGoodById(int GoodId)
+        {
+            var good = (from g in db.Goods
+                        where g.GoodID == GoodId
+                        select g).FirstOrDefault();
+            return good;
+        }
         public void AddGoods(Good goods)
         {
             db.Goods.Add(goods);
@@ -37,12 +46,4 @@ namespace DAL
         }
     }
 }
-//GoodTitle=a.GoodTitle,
-//GoodPhoto=a.GoodPhoto,
-//GoodDescribe=a.GoodDescribe,
-//CategoryID =(int) a.CategoryID,
-//Price= (decimal)a.Price,
-//Amount= (int)a.Amount,
-//ShopName= b.ShopName,
-//Avatar= c.Avatar,
-//UserName= c.UserName,                         
+                      

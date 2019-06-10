@@ -26,10 +26,16 @@ namespace DALFactory
             return (IShop)Assembly.Load(AssemblyName).CreateInstance(className);
         }
 
-        public static IGoods CreatreGoods()
+        public static IGoods CreateGoods()
         {
             string className = "DAL.SqlGoods";
             return (IGoods)Assembly.Load(AssemblyName).CreateInstance(className);
+        }
+
+        public static IShopCart CreateShopCart()
+        {
+            string className = "DAL.SqlShopCart";
+            return (IShopCart)Assembly.Load(AssemblyName).CreateInstance(className);
         }
     }
 }

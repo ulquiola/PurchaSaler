@@ -10,6 +10,7 @@ namespace IDAL
     public interface IGoods
     {
         IEnumerable<GoodsInfo> GetGoodsInfos();
+        Good GetGoodById(int GoodId); 
         void AddGoods(Good goods);
     }
 }

@@ -8,6 +8,7 @@ namespace Models
 {
     public class GoodsInfo
     {
+        public int GoodId { get; set; }
         public string GoodTitle { get; set; }
         public string GoodPhoto { get; set; }
         public string GoodDescribe { get; set; }

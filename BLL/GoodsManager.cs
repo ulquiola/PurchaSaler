@@ -11,11 +11,15 @@ namespace BLL
 {
     public class GoodsManager
     {
-        private IGoods igooder = DataAccess.CreatreGoods();
+        private IGoods igooder = DataAccess.CreateGoods();
 
         public IEnumerable<GoodsInfo> GetGoodsInfos()
         {
             return igooder.GetGoodsInfos();
+        }
+        public Good GetGoodById(int GoodId)
+        {
+            return igooder.GetGoodById(GoodId);
         }
         public void AddGoods(Good goods)
         {

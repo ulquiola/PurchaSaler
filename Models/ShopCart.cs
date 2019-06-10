@@ -21,5 +21,6 @@ namespace Models
         public Nullable<decimal> Total { get; set; }
     
         public virtual User User { get; set; }
+        public virtual Good Good { get; set; }
     }
 }
