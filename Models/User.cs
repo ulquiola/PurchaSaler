@@ -21,6 +21,7 @@ namespace Models
             this.GoodComments = new HashSet<GoodComment>();
             this.Orders = new HashSet<Order>();
             this.ReplyComments = new HashSet<ReplyComment>();
+            this.ShopCarts = new HashSet<ShopCart>();
             this.Shops = new HashSet<Shop>();
         }
     
@@ -39,7 +40,8 @@ namespace Models
         public virtual ICollection<Order> Orders { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ReplyComment> ReplyComments { get; set; }
-        public virtual ShopCart ShopCart { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<ShopCart> ShopCarts { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Shop> Shops { get; set; }
     }

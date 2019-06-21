@@ -34,6 +34,7 @@ namespace Models
         public virtual DbSet<ReplyComment> ReplyComments { get; set; }
         public virtual DbSet<ShopCart> ShopCarts { get; set; }
         public virtual DbSet<Shop> Shops { get; set; }
+        public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
         public virtual DbSet<User> Users { get; set; }
     }
 }

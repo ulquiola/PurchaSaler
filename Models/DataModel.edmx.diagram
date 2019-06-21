@@ -4,17 +4,18 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="dcb98b50fbe74bc5a83823f08ced78cb" Name="Diagram1">
+      <Diagram DiagramId="0a357ed2626946ffbce6dfee07049b09" Name="Diagram1">
         <EntityTypeShape EntityType="PurchaSalerModel.AdressInfo" Width="1.5" PointX="3" PointY="1.625" IsExpanded="true" />
         <EntityTypeShape EntityType="PurchaSalerModel.Category" Width="1.5" PointX="5.75" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="PurchaSalerModel.GoodComment" Width="1.5" PointX="3" PointY="4.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="PurchaSalerModel.Good" Width="1.5" PointX="7.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="PurchaSalerModel.Good" Width="1.5" PointX="5.75" PointY="3.75" IsExpanded="true" />
         <EntityTypeShape EntityType="PurchaSalerModel.OrderItem" Width="1.5" PointX="5.25" PointY="7.125" IsExpanded="true" />
         <EntityTypeShape EntityType="PurchaSalerModel.Order" Width="1.5" PointX="3" PointY="7.25" IsExpanded="true" />
         <EntityTypeShape EntityType="PurchaSalerModel.ReplyComment" Width="1.5" PointX="3" PointY="10.25" IsExpanded="true" />
         <EntityTypeShape EntityType="PurchaSalerModel.ShopCart" Width="1.5" PointX="3" PointY="13" IsExpanded="true" />
-        <EntityTypeShape EntityType="PurchaSalerModel.Shop" Width="1.5" PointX="3" PointY="15.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="PurchaSalerModel.User" Width="1.5" PointX="0.75" PointY="8" IsExpanded="true" />
+        <EntityTypeShape EntityType="PurchaSalerModel.Shop" Width="1.5" PointX="3" PointY="16.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="PurchaSalerModel.sysdiagram" Width="1.5" PointX="7.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="PurchaSalerModel.User" Width="1.5" PointX="0.75" PointY="8.125" IsExpanded="true" />
         <AssociationConnector Association="PurchaSalerModel.FK_AdressInfo_Users" ManuallyRouted="false" />
         <AssociationConnector Association="PurchaSalerModel.FK_GoodComment_Users" ManuallyRouted="false" />
         <AssociationConnector Association="PurchaSalerModel.FK_OrderItems_Orders" ManuallyRouted="false" />
@@ -22,7 +23,6 @@
         <AssociationConnector Association="PurchaSalerModel.FK_ReplyComment_Users" ManuallyRouted="false" />
         <AssociationConnector Association="PurchaSalerModel.FK_ShopCarts_Users1" ManuallyRouted="false" />
         <AssociationConnector Association="PurchaSalerModel.FK_Shops_Users" ManuallyRouted="false" />
-        <EntityTypeShape EntityType="PurchaSalerModel.sysdiagram" Width="1.5" PointX="7.375" PointY="4.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

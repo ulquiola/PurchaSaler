@@ -1,0 +1,21 @@
+﻿@if (Session["UserName"] != null)
+{
+    
+    <li><a href="#">订单</a></li>
+    <li>
+        <a href="@Url.Action("ShopCart","Mall",new { UserID=Session["UserID"]})">购物车</a>
+    </li>
+    <li><a href="#">收藏夹</a></li>
+}
+else
+{
+    <li>
+        <a onclick="confirm('请先登录')?location.href='@Url.Action("Login", "User")':''" href="javascript:;">订单</a>
+    </li>
+    <li>
+        <a onclick="confirm('请先登录')?location.href='@Url.Action("Login", "User")':''" href="javascript:;">购物车</a>
+    </li>
+    <li>
+        <a onclick="confirm('请先登录')?location.href='@Url.Action("Login", "User")':''" href="javascript:;">收藏夹</a>
+    </li>
+}

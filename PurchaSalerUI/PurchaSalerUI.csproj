@@ -145,6 +145,7 @@
     <Content Include="Content\css\bootstrap.css" />
     <Content Include="Content\css\bootstrap.min.css" />
     <Content Include="Content\css\common.css" />
+    <Content Include="Content\css\goodDetais.css" />
     <Content Include="Content\css\index.css" />
     <Content Include="Content\css\login.css" />
     <Content Include="Content\css\register.css" />
@@ -156,6 +157,10 @@
     <Content Include="Content\img\opera3.png" />
     <Content Include="Content\img\opera4.png" />
     <Content Include="Content\css\PagedList.css" />
+    <Content Include="Content\img\信誉.png" />
+    <Content Include="Content\img\商家图标.png" />
+    <Content Include="Content\img\店.png" />
+    <Content Include="Content\img\联系.png" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -173,6 +178,7 @@
     <Content Include="Scripts\jquery-3.3.1.slim.js" />
     <Content Include="Scripts\jquery-3.3.1.slim.min.js" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery.unobtrusive-ajax.min.js" />
     <Content Include="Scripts\jquery.validate.js" />
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
@@ -205,13 +211,16 @@
     <Content Include="Views\User\Register.cshtml" />
     <Content Include="Views\Shop\AddShop.cshtml" />
     <Content Include="Views\User\UserCenter.cshtml" />
-    <Content Include="Views\Mall\GoodsDetails.cshtml" />
+    <Content Include="Views\Mall\GoodsDetails%28old%29.cshtml" />
+    <Content Include="Views\Shared\_PartialOrder_CartAndColle.cshtml" />
     <Content Include="Views\Mall\ShopCart.cshtml" />
+    <Content Include="Views\Mall\GoodsDetails.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Content\font\" />
     <Folder Include="Content\img\imageGood\" />
+    <Folder Include="JS\" />
     <Folder Include="Models\" />
     <Folder Include="ViewModel\" />
   </ItemGroup>

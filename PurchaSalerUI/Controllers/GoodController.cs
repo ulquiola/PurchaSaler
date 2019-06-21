@@ -16,25 +16,33 @@ namespace PurchaSalerUI.Controllers
         public ActionResult AddGoods()
         {
             ShopManager shopManager = new ShopManager();
-            int userid = int.Parse(Session["UserID"].ToString());
-            var s = shopManager.GetShop(userid);
-            //判断当前用户有没有开设店铺
-            if (s != null)
+            if (Session["UserID"]!=null)
             {
-                //获取当前用户店铺ID
-                Session["ShopID"] = s.ShopID;
+                int userid = int.Parse(Session["UserID"].ToString());
+                var s = shopManager.GetShop(userid);
+                //判断当前用户有没有开设店铺
+                if (s != null)
+                {
+                    //获取当前用户店铺ID
+                    Session["ShopID"] = s.ShopID;
 
-                //获取分类的id和对应的分类名
-                PurchaSalerEntities db = new PurchaSalerEntities();
-                ViewBag.categoryid = new SelectList(db.Categories, "CategoryID", "CategoryName");
+                    //获取分类的id和对应的分类名
+                    PurchaSalerEntities db = new PurchaSalerEntities();
+                    ViewBag.categoryid = new SelectList(db.Categories, "CategoryID", "CategoryName");
 
-                return View("AddGoods");//转到发布商品视图 
+                    return View("AddGoods");//转到发布商品视图 
 
+                }
+                else
+                {
+                    return RedirectToAction("AddShop", "Shop");//转到添加商铺视图
+                }
             }
             else
             {
-                return RedirectToAction("AddShop", "Shop");//转到添加商铺视图
+                return Content("<script>alert('请先登录！');window.location.href = document.referrer;</script>");
             }
+            
         }
         [HttpPost]
         public ActionResult AddGoods(Good goods)

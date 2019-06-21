@@ -30,6 +30,7 @@ namespace PurchaSalerUI.Controllers
             ViewBag.photo = goodDetails.GoodPhoto;
             ViewBag.Title = goodDetails.GoodTitle;
             ViewBag.Price = goodDetails.Price;
+            ViewBag.Account = goodDetails.Amount;
             Session["GoodId_Cart"] = goodDetails.GoodID;
             return View();
         }
@@ -38,14 +39,14 @@ namespace PurchaSalerUI.Controllers
         {
             shopCart.UserID = Convert.ToInt32(Session["UserID"]);
             shopCart.GoodID = Convert.ToInt32(Session["GoodId_Cart"]);
-            int count = shopCartManager.GetshopcartCount(shopCart.UserID, shopCart.GoodID.Value);
+            int count = shopCartManager.GetshopcartCount(shopCart.UserID, shopCart.GoodID);
             if (count>0)
             {
                 return Content("<script>alert('该商品已在购物车中！');window.location.href = document.referrer;</script>");
             }
             else
             {                
-                shopCart.Amount = Convert.ToInt32(Request["number"]);
+                shopCart.Amount = Convert.ToInt32(Request["Jm_Amount"]);
                 shopCart.Price = Convert.ToDecimal(Request["Price"]);
                 shopCart.Total = shopCart.Amount * shopCart.Price;
                 shopCartManager.AddCart(shopCart);

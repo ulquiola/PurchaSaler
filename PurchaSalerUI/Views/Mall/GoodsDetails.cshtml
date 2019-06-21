@@ -1,66 +1,134 @@
 ﻿
-<!DOCTYPE html>
-
-<html>
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <title></title>
-
-    @Scripts.Render("~/Scripts/jquery-3.3.1.min.js")
-    <style>
-        div img {
-            cursor: pointer;
-        }
-    </style>
-</head>
-<body>
+@section head{
+    <link href="~/Content/css/goodDetais.css" rel="stylesheet" />
     <script>
-        function Add() {
-            var x = document.getElementById("number").value;
-            x = parseInt(x) + 1;
-            document.getElementById("number").value = x;
-        }
-        function Reduce() {
-            var x = document.getElementById("number").value;
-            x = parseInt(x) - 1;
-            document.getElementById("number").value = x;
-            if (document.getElementById("number").value <= 0) {
-                alert("请输入正确的数量");
-                document.getElementById("number").value = 1;
+        jQuery.extend( {
+    min : 1,
+    reg : function(x) {
+        jQuery('#J_Tip').html("");
+        jQuery('#J_Tip').hide();
+        return new RegExp("^[1-9]\\d*$").test(x);
+    },
+    amount : function(obj, mode) {
+        var x = jQuery(obj).val();
+        if (this.reg(parseInt(x))) {
+            if (mode) {
+                x++;
+            } else {
+                x--;
             }
+        } else {
+            jQuery('#J_Tip').html("<i class=\"ico\"></i>请输入正确的数量！");
+            jQuery('#J_Tip').show();
+            jQuery(obj).val(1);
+            jQuery(obj).focus();
         }
-
+        return x;
+    },
+    reduce : function(obj) {
+        var x = this.amount(obj, false);
+        if (parseInt(x) >= this.min) {
+            jQuery(obj).val(x);
+        } else {
+            jQuery('#J_Tip').html("<i class=\"ico\"></i>商品数量最少为" + this.min
+                    + "！");
+            jQuery('#J_Tip').show();
+            jQuery(obj).val(1);
+            jQuery(obj).focus();
+        }
+    },
+    add : function(obj) {
+        var x = this.amount(obj, true);
+        var max = jQuery('#nAmount').val();
+        if (parseInt(x) <= parseInt(max)) {
+            jQuery(obj).val(x);
+        } else {
+            jQuery('#J_Tip').html("<i class=\"ico\"></i>您所填写的商品数量超过库存！");
+            jQuery('#J_Tip').show();
+            jQuery(obj).val(max == 0 ? 1 : max);
+            jQuery(obj).focus();
+        }
+    },
+    modify : function(obj) {
+        var x = jQuery(obj).val();
+        var max = jQuery('#nAmount').val();
+        if (!this.reg(parseInt(x))) {
+            jQuery(obj).val(1);
+            jQuery(obj).focus();
+            jQuery('#J_Tip').html("<i class=\"ico\"></i>请输入正确的数量！");
+            jQuery('#J_Tip').show();
+            return;
+        }
+        var intx = parseInt(x);
+        var intmax = parseInt(max);
+        if (intx < this.min) {
+            jQuery('#J_Tip').html("<i class=\"ico\"></i>商品数量最少为" + this.min
+                    + "！");
+            jQuery('#J_Tip').show();
+            jQuery(obj).val(this.min);
+            jQuery(obj).focus();
+        } else if (intx > intmax) {
+            jQuery('#J_Tip').html("<i class=\"ico\"></i>您所填写的商品数量超过库存！");
+            jQuery('#J_Tip').show();
+            jQuery(obj).val(max == 0 ? 1 : max);
+            jQuery(obj).focus();
+        }
+    }
+    });
     </script>
+}
 
-
-    <div class="container" style="width:80%;margin-top:30px;">
-        <p style="float:left"><a href="@Url.Action("Index","Home")">商城首页</a>><b>@ViewBag.name</b></p>
-        <hr style="background-color:#808080;width:100%;height:1px;border:none;">
-
-        <img src="@ViewBag.photo" style="width:400px;height:400px;" />
-
-
-        <div style="width:50%;height:400px;float:right;">
-            <div style="height:15%">
-                <h3>@ViewBag.Title</h3>
-
+<div class="router">
+    <ul class="nav align-left">
+        <li><a href="/Home/Index">首页</a></li>
+        <li><span class="divider"></span></li>
+        <li><span>商品详情</span></li>
+    </ul>
+</div>
+<div class="container-fluid">
+    <hr style="width:90%;color:aqua;margin-left:5%;" />
+    <div class="row">
+        <div class="left-content col-md-4">
+            <img src="@ViewBag.photo" style="width:400px;height:400px;" />
+        </div>
+        <div class="middle-content col-md-5">
+            <div class="good-title">
+                <p class="title">@ViewBag.Title                                     </p>
             </div>
-            <div style="height:15%;">
-                <p style="color:red;font-size:20px;">¥@ViewBag.price</p>
+            <div class="price">
+                <div class="zhehoujia"><s>价格：</s><em>￥</em><span>@ViewBag.price</span></div>
+                <input type="hidden" name="price" value="@ViewBag.price">
             </div>
-            <div style="height:15%">
-                <p>运费 包邮：0.00</p>
+            <div class="yunfei">
+                <s>运费&nbsp;&nbsp;&nbsp;&nbsp;包邮：0.00</s>
             </div>
-            <div style="height:15%">
-                <p>上架时间：@ViewBag.addtime</p>
+            <div class="time">
+                <span>上架时间：</span>
+                <p>2019/5/20 20:13:14</p>
             </div>
-            @using (Html.BeginForm("AddCart", "Mall", System.Web.Mvc.FormMethod.Post, new { }))
-            {
-                <input type="hidden" name="price" value="@ViewBag.price" />
-                <div style="height:15%">
-                    数量&nbsp;&nbsp;&nbsp;<input type="button" value="-" onclick="Reduce()" />&nbsp;&nbsp;<input type="text" value="1" name="number" id="number" />&nbsp;&nbsp;<input type="button" value="+" onclick="return Add();" />
+            <div class="xiaoliang">
+                <ul class="nav">
+                    <li>销量<s>2252</s></li>
+                    <li>累计评价<s>0</s></li>
+                    <li>收藏数<s>0</s></li>
+                </ul>
+            </div>
+            <form action="/Mall/AddCart" method="post">
+                <input type="hidden" name="price" value="@ViewBag.price">
+                <div class="Edit">
+                    <s>数量</s>
+                    <div class="button">
+                        <a class="num_oper num_min" href="javascript:jQuery.reduce('#J_Amount');">-</a>
+
+                        <input name="Jm_Amount" id="J_Amount" class="input_txt" type="text" maxlength="6" value="1" onkeyup="jQuery.modify('#J_Amount');" style="width:40px;" />
+
+                        <a class="num_oper num_plus" href="javascript:jQuery.add('#J_Amount')">+</a>
+                        <p class="caution_tips" id="J_Tip" style="display:none;"></p>
+                        <input id="nAmount" type="hidden" value="@ViewBag.Account">
+                    </div>
+                    <div class="kucun">库存 @ViewBag.Account 件</div>
                 </div>
-                <div style="height:15%;margin-bottom:0px;">
+                <div style="height:15%;margin-bottom:0px;margin-left:75px;margin-top:30px">
                     @if (Session["username"] == null)
                     {
                         <a onclick="confirm('请先登录')?location.href='@Url.Action("Login", "User")':''" href="javascript:;">
@@ -76,29 +144,56 @@
                     }
 
                 </div>
-            }
-            <div style="height:15%">
-                <ul style="list-style-type:none;">
-                    <li style="float:left;text-align:left;margin:10px">
-                        服务承诺
+            </form>
+        </div>
+        <div class="right-content col-md-3">
+            <div class="image"><img src="~/Content/img/商家图标.png"></div>
+            <div class="biaoti">
+                <div class="img">
+                    <img src="~/Content/img/店.png">
+                </div>
+                <div class="shijian">7年老店</div>
+            </div>
+            <div class="shop-name">橘生淮南</div>
+            <div class="xinyu">
+                <a>信誉：</a>
+                <ul>
+                    <li>
+                        <img src="~/Content/img/信誉.png">
                     </li>
-
-                    <li style="float:left;margin:10px">
-                        正品保证
+                    <li>
+                        <img src="~/Content/img/信誉.png">
                     </li>
-                    <li style="float:left;margin:10px">
-                        极速退款
+                    <li>
+                        <img src="~/Content/img/信誉.png">
                     </li>
-                    <li style="float:left;margin:10px">
-                        赠运费险
-                    </li>
-                    <li style="float:left;margin:10px">
-                        七天无理由退货
+                    <li>
+                        <img src="~/Content/img/信誉.png">
                     </li>
                 </ul>
             </div>
-        </div>
+            <div class="zhanggui">
+                <a>掌柜：<s>小橘子       </s></a>
+            </div>
+            <div class="lianxi">
+                <a>联系：</a>
+                <img src="~/Content/img/联系.png">
+                <s>和我联系</s>
 
+            </div>
+            <div class="xinxi">
+                <ul>
+                    <li><div class="wenzi"><a>描述</a></div><div class="pingfen"><a>4.7</a></div></li>
+                    <li><div class="wenzi"><a>服务</a></div><div class="pingfen"><a>4.7</a></div></li>
+                    <li><div class="wenzi"><a>物流</a></div><div class="pingfen"><a>4.7</a></div></li>
+                </ul>
+            </div>
+            <div class="two-btn">
+                <div class="jinru"><a href="/Goods/Shops?ShopID=1">进入店铺</a></div>
+                <div class="shoucang"><a>收藏店铺</a></div>
+            </div>
+            </div>
     </div>
-</body>
-</html>
+
+</div>
+    
