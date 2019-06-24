@@ -45,6 +45,7 @@
     <Compile Include="IShop.cs" />
     <Compile Include="IShopCart.cs" />
     <Compile Include="IUser.cs" />
+    <Compile Include="IOrder.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

@@ -50,6 +50,7 @@
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SqlGoods.cs" />
+    <Compile Include="SqlOrder.cs" />
     <Compile Include="SqlShop.cs" />
     <Compile Include="SqlShopCart.cs" />
     <Compile Include="SqlUser.cs" />
