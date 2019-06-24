@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -54,7 +55,11 @@ namespace DAL
         }
         public void UpdateUserInfo(User user)
         {
-            db.Users.Attach(user);
+            var man = db.Users.Where(u => u.UserID == user.UserID).FirstOrDefault();
+            man.Avatar = user.Avatar;
+            man.UserName = user.UserName;
+            man.Tel = user.Tel;
+            man.Email = user.Email;
             db.SaveChanges();
         }
 

@@ -28,6 +28,8 @@ namespace PurchaSalerUI.Controllers
                        join b in db.Goods on a.GoodID equals b.GoodID
                        select new View_ShopCart
                        {
+                           GoodID=a.GoodID,
+                           UserID=a.UserID,
                            GoodPhoto = b.GoodPhoto,
                            GoodTitle = b.GoodTitle,
                            Price = a.Price,
@@ -69,5 +71,15 @@ namespace PurchaSalerUI.Controllers
             }
 
         }
+        public ActionResult RemoveCart(int GoodID)
+        {
+            var cart = shopCartManager.SelectOneCart(GoodID);
+            if (cart != null)
+            {
+                shopCartManager.RemoveOneCart(cart);
+            }
+            return RedirectToAction("ShopCart", "Mall", new { UserID = Convert.ToInt32(Session["UserID"]) });
+        }
+
     }
 }

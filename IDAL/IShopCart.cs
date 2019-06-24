@@ -12,5 +12,8 @@ namespace IDAL
         IEnumerable<ShopCart> GetShopCarts(int UserID);
         void AddCart(ShopCart shopCart);
         int GetshopcartCount(int UserID, int GoodID);
+
+        ShopCart SelectOneCart(int GoodID);
+        void RemoveOneCart(ShopCart cart);
     }
 }

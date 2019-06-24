@@ -69,36 +69,18 @@ namespace PurchaSalerUI.Controllers
         [HttpPost]
         public ActionResult UpdateUserInfo(User user)
         {
-            try
-            {
-                HttpPostedFileBase image = Request.Files["image"];
-                string SavePath = Server.MapPath("~/Content/img/avatar/");
-                string imageName = DateTime.Now.ToFileTime().ToString() + image.FileName;//获取图片名
-                image.SaveAs(Path.Combine(SavePath, imageName));//储存图片到物理路径
+            HttpPostedFileBase image = Request.Files["image0"];
+            string SavePath = Server.MapPath("~/Content/img/avatar/");
+            string imageName =image.FileName;//获取图片名
+            image.SaveAs(Path.Combine(SavePath, imageName));//储存图片到物理路径
 
-                user.Avatar = "/Content/img/avatar/" + imageName;
-                user.UserName = Convert.ToString(Request["name"]);
-                user.Tel = Convert.ToString(Request["tel"]);
-                user.Email = Convert.ToString(Request["email"]);
-                usermanager.UpdateUserInfo(user);
-                return RedirectToAction("UpdateUserInfo", "User",new { UserID=Convert.ToInt32(Session["UserID"])});
+            user.Avatar = "/Content/img/avatar/" + imageName;
+            user.UserName =Request["name0"];
+            user.Tel =Request["tel0"];
+            user.Email =Request["email0"];
+            usermanager.UpdateUserInfo(user);
+            return RedirectToAction("UpdateUserInfo", "User",new { UserID=Convert.ToInt32(Session["UserID"])});
 
-            }
-            catch (DbEntityValidationException e)
-            {
-                foreach (var valErrors in e.EntityValidationErrors)
-                {
-                    foreach (var errors in valErrors.ValidationErrors)
-                    {
-                        //here you will get property name and error message
-                        Trace.TraceInformation("Property: {0} Error: {1}",
-                                        errors.PropertyName,
-                                        errors.ErrorMessage);
-                    }
-
-                }
-                throw;
-            }
             
         }
     }

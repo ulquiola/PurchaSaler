@@ -32,5 +32,17 @@ namespace DAL
                ).Count();
             return cart;
         }
+        public ShopCart SelectOneCart(int GoodID)
+        {
+            var cart = from c in db.ShopCarts
+                       where c.GoodID == GoodID
+                       select c;
+            return cart.FirstOrDefault();
+        }
+        public void RemoveOneCart(ShopCart cart)
+        {
+            db.ShopCarts.Remove(cart);
+            db.SaveChanges();
+        }
     }
 }

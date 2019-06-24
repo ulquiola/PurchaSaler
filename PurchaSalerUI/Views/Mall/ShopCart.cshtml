@@ -74,7 +74,7 @@
                         </td>
                         <td class="subtotal">@p.Total </td>
 
-                        <td class="operation"><span class="delete">@Html.ActionLink("删除", "Remove", new { goodid = @p.GoodID }, new { onclick = "return confirm('确认删除吗？')" })</span></td>
+                        <td class="operation"><span class="delete">@Html.ActionLink("删除", "RemoveCart","Mall", new { GoodID = @p.GoodID }, new { onclick = "return confirm('确认删除吗？')" })</span></td>
                     </tr>
 
                     

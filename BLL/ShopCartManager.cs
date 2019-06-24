@@ -25,5 +25,13 @@ namespace BLL
         {
             return iShopCart.GetshopcartCount(UserID, GoodID);
         }
+        public ShopCart SelectOneCart(int GoodID)
+        {
+            return iShopCart.SelectOneCart(GoodID);
+        }
+        public void RemoveOneCart(ShopCart cart)
+        {
+            iShopCart.RemoveOneCart(cart);
+        }
     }
 }
