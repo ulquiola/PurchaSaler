@@ -3,7 +3,7 @@
     
     <li><a href="#">订单</a></li>
     <li>
-        <a href="@Url.Action("ShopCart","Mall",new { UserID=Session["UserID"]})">购物车</a>
+        <a href="@Url.Action("ShopCart","Mall",new { UserID=Convert.ToInt32(Session["UserID"])})">购物车</a>
     </li>
     <li><a href="#">收藏夹</a></li>
 }
