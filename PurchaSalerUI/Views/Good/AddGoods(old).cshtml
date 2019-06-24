@@ -1,0 +1,38 @@
+﻿@model Models.Good
+@{
+    ViewBag.Title = "AddGoods";
+}
+@section head{
+    <link href="~/Content/css/addGoods.css" rel="stylesheet" />
+}
+
+
+<form action="/Good/AddGoods" method="post" class="Addform" enctype="multipart/form-data">
+    <h2>发布置闲</h2>    
+
+    <div class="title">
+        @Html.TextBoxFor(g => g.GoodTitle, new { placeholder="标题 品牌型号 都是买家喜欢搜索的" })
+        @*<input type="text" name="title" placeholder="标题  品牌型号 都是买家喜欢搜索的" />*@
+    </div>
+    <div class="category">
+        @*@Html.DropDownList("categoryid", null, new { @class = "form-control" })*@
+        @Html.DropDownListFor(g => g.CategoryID, ViewBag.categoryid as SelectList,"请选择宝贝类型")
+    </div>
+    <div class="describe">
+        @Html.TextBoxFor(g => g.GoodDescribe, new { placeholder="描述宝贝的转手原因、入手渠道和使用感受"})
+        @*<input type="text" name="desc" placeholder="描述宝贝的转手原因、入手渠道和使用感受" />*@
+    </div>
+    <div class="photo">
+        <input type="file" name="image" value="选择图片" />
+    </div>
+    <div class="quality">
+        @Html.TextBoxFor(g=>g.Quality,new { placeholder="描述宝贝成色、质量"})
+    </div>
+    <div class="Amount">
+        @Html.TextBoxFor(g => g.Amount, new { placeholder = "库存、数量" })
+    </div>
+    <div class="price">
+        @Html.TextBoxFor(g=>g.Price,new { placeholder="输入宝贝单价"})
+    </div>
+    <div class="btn"><input type="submit" name="sub" value="确认发布" /></div>
+</form>

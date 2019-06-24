@@ -3,33 +3,71 @@
     ViewBag.Title = "AddGoods";
 }
 @section head{
-    <link href="~/Content/css/addGoods.css" rel="stylesheet" />
+    <style>
+        .router {
+            line-height: 53px;
+            height: 60px;
+            background: #ffdc61
+        }
+
+        .router li {
+            float: left;
+            margin-right: 6px;
+            color: #808080;
+        }
+
+        .router li a {
+            color: inherit;
+        }
+
+        .router li a:hover {
+            color: #239ee2;
+        }
+
+        .router .divider:after {
+            content: '>';
+        }
+        .item{
+            margin:20px 100px 20px 400px;
+        }
+        .item .categ{
+            width:60%;
+            text-align:center;
+        }
+        .item input{
+            width:60%;
+            text-align:center;
+        }
+    </style>
 }
-
-
-<form action="/Good/AddGoods" method="post" class="Addform" enctype="multipart/form-data">
-    <h2>发布置闲</h2>    
-
-    <div class="title">
-        @Html.TextBoxFor(g => g.GoodTitle, new { placeholder="标题 品牌型号 都是买家喜欢搜索的" })
-        @*<input type="text" name="title" placeholder="标题  品牌型号 都是买家喜欢搜索的" />*@
+<div class="router">
+    <ul class="nav align-left">
+        <li><a href="/Home/Index">首页</a></li>
+        <li><span class="divider"></span></li>
+        <li><span>发布置闲</span></li>
+    </ul>
+</div>
+<form action="/Good/AddGoods" method="post" enctype="multipart/form-data">
+    <div class="item">
+        @Html.TextBoxFor(g => g.GoodTitle, new { placeholder = "标题 品牌型号 都是买家喜欢搜索的", @class = "form-control" })
     </div>
-    <div class="category">
-        @*@Html.DropDownList("categoryid", null, new { @class = "form-control" })*@
-        @Html.DropDownListFor(g => g.CategoryID, ViewBag.categoryid as SelectList,"请选择宝贝类型")
+    <div class="item">
+        @Html.DropDownListFor(g => g.CategoryID, ViewBag.categoryid as SelectList, "请选择宝贝类型", new { @class = "form-control categ" })
     </div>
-    <div class="describe">
-        @Html.TextBoxFor(g => g.GoodDescribe, new { placeholder="描述宝贝的转手原因、入手渠道和使用感受"})
-        @*<input type="text" name="desc" placeholder="描述宝贝的转手原因、入手渠道和使用感受" />*@
+    <div class="item">
+        @Html.TextBoxFor(g => g.GoodDescribe, new { placeholder = "描述宝贝的转手原因、入手渠道和使用感受", @class = "form-control" })
     </div>
-    <div class="photo">
-        <input type="file" name="image" value="选择图片" />
+    <div class="item">
+        <input type="file" name="image" value="选择图片" class="form-control" />
     </div>
-    <div class="quality">
-        @Html.TextBoxFor(g=>g.Quality,new { placeholder="描述宝贝成色、质量"})
+    <div class="item">
+        @Html.TextBoxFor(g => g.Quality, new { placeholder = "描述宝贝成色、质量", @class = "form-control" })
     </div>
-    <div class="price">
-        @Html.TextBoxFor(g=>g.Price,new { placeholder="输入宝贝单价"})
+    <div class="item">
+        @Html.TextBoxFor(g => g.Amount, new { placeholder = "库存、数量", @class = "form-control" })
     </div>
-    <div class="btn"><input type="submit" name="sub" value="确认发布" /></div>
+    <div class="item">
+        @Html.TextBoxFor(g => g.Price, new { placeholder = "输入宝贝单价", @class = "form-control" })
+    </div>
+    <input type="submit" name="sub" value="确认发布" class="btn btn-default" style="margin-left:45%" />
 </form>
