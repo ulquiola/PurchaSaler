@@ -9,6 +9,10 @@ namespace BLL
     {
         private IUser iuser = DataAccess.CreateUser();
 
+        public User GetUserInfoByID(int UserID)
+        {
+            return iuser.GetUserInfoByID(UserID);
+        }
         public User GetUserInfo(string username)
         {
             return iuser.GetUserInfo(username);
@@ -27,6 +31,10 @@ namespace BLL
         public void InsertUser(User man)
         {
             iuser.InsertUser(man);
+        }
+        public void UpdateUserInfo(User user)
+        {
+            iuser.UpdateUserInfo(user);
         }
     }
 }

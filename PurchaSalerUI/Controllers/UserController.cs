@@ -5,6 +5,9 @@ using System.Web;
 using System.Web.Mvc;
 using Models;
 using BLL;
+using System.IO;
+using System.Data.Entity.Validation;
+using System.Diagnostics;
 
 namespace PurchaSalerUI.Controllers
 {
@@ -54,9 +57,49 @@ namespace PurchaSalerUI.Controllers
             return RedirectToAction("Index", "Home");
         }
 
-        public ActionResult UserCenter()
+        public ActionResult UpdateUserInfo(int UserID)
         {
+            var uinfo= usermanager.GetUserInfoByID(UserID);
+            ViewBag.Avatar = uinfo.Avatar;
+            ViewBag.UserName = uinfo.UserName;
+            ViewBag.Tel = uinfo.Tel;
+            ViewBag.Email = uinfo.Email;
             return View();
+        }
+        [HttpPost]
+        public ActionResult UpdateUserInfo(User user)
+        {
+            try
+            {
+                HttpPostedFileBase image = Request.Files["image"];
+                string SavePath = Server.MapPath("~/Content/img/avatar/");
+                string imageName = DateTime.Now.ToFileTime().ToString() + image.FileName;//获取图片名
+                image.SaveAs(Path.Combine(SavePath, imageName));//储存图片到物理路径
+
+                user.Avatar = "/Content/img/avatar/" + imageName;
+                user.UserName = Convert.ToString(Request["name"]);
+                user.Tel = Convert.ToString(Request["tel"]);
+                user.Email = Convert.ToString(Request["email"]);
+                usermanager.UpdateUserInfo(user);
+                return RedirectToAction("UpdateUserInfo", "User",new { UserID=Convert.ToInt32(Session["UserID"])});
+
+            }
+            catch (DbEntityValidationException e)
+            {
+                foreach (var valErrors in e.EntityValidationErrors)
+                {
+                    foreach (var errors in valErrors.ValidationErrors)
+                    {
+                        //here you will get property name and error message
+                        Trace.TraceInformation("Property: {0} Error: {1}",
+                                        errors.PropertyName,
+                                        errors.ErrorMessage);
+                    }
+
+                }
+                throw;
+            }
+            
         }
     }
 }

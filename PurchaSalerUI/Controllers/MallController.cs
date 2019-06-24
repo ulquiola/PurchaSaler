@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.Mvc;
 using BLL;
 using Models;
+using PurchaSalerUI.ViewModel;
 
 namespace PurchaSalerUI.Controllers
 {
@@ -19,9 +20,22 @@ namespace PurchaSalerUI.Controllers
         
         public ActionResult ShopCart(int UserID)
         {
-            UserID = Convert.ToInt32(Session["UserID"]);
-            var shopCart = shopCartManager.GetShopCarts(UserID);
-            return View(shopCart);
+
+            //var shopCart = shopCartManager.GetShopCarts(UserID);
+            PurchaSalerEntities db = new PurchaSalerEntities();
+            var cart = from a in db.ShopCarts
+                       where a.UserID==UserID
+                       join b in db.Goods on a.GoodID equals b.GoodID
+                       select new View_ShopCart
+                       {
+                           GoodPhoto = b.GoodPhoto,
+                           GoodTitle = b.GoodTitle,
+                           Price = a.Price,
+                           Amount = a.Amount,
+                           Total = a.Total
+                       };
+            return View(cart);
+
         }
 
         public ActionResult GoodsDetails(int GoodId)
@@ -29,6 +43,7 @@ namespace PurchaSalerUI.Controllers
             var goodDetails = goodsManager.GetGoodById(GoodId);
             ViewBag.photo = goodDetails.GoodPhoto;
             ViewBag.Title = goodDetails.GoodTitle;
+            ViewBag.Desc = goodDetails.GoodDescribe;
             ViewBag.Price = goodDetails.Price;
             ViewBag.Account = goodDetails.Amount;
             Session["GoodId_Cart"] = goodDetails.GoodID;

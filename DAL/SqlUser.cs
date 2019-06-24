@@ -13,6 +13,13 @@ namespace DAL
     {
         PurchaSalerEntities db = new PurchaSalerEntities();
 
+        public User GetUserInfoByID(int UserID)
+        {
+            var userinfo = from u in db.Users
+                           where u.UserID == UserID
+                           select u;
+            return userinfo.FirstOrDefault();
+        }
         public User GetUserInfo(string username)
         {
             var userinfo = from u in db.Users
@@ -45,5 +52,11 @@ namespace DAL
             db.Users.Add(man);
             db.SaveChanges();
         }
+        public void UpdateUserInfo(User user)
+        {
+            db.Users.Attach(user);
+            db.SaveChanges();
+        }
+
     }
 }

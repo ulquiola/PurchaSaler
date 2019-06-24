@@ -135,6 +135,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ViewModel\View_ShopCart.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\css\addGoods.css" />
@@ -149,6 +150,7 @@
     <Content Include="Content\css\index.css" />
     <Content Include="Content\css\login.css" />
     <Content Include="Content\css\register.css" />
+    <Content Include="Content\css\usercenter%28new%29.css" />
     <Content Include="Content\css\usercenter.css" />
     <Content Include="Content\img\acount_bg.jpg" />
     <Content Include="Content\img\avatar\lifa.jpg" />
@@ -210,11 +212,12 @@
     <Content Include="Views\Shared\_PartialAvatar.cshtml" />
     <Content Include="Views\User\Register.cshtml" />
     <Content Include="Views\Shop\AddShop.cshtml" />
-    <Content Include="Views\User\UserCenter.cshtml" />
+    <Content Include="Views\User\UserCenter%28old%29.cshtml" />
     <Content Include="Views\Mall\GoodsDetails%28old%29.cshtml" />
     <Content Include="Views\Shared\_PartialOrder_CartAndColle.cshtml" />
     <Content Include="Views\Mall\ShopCart.cshtml" />
     <Content Include="Views\Mall\GoodsDetails.cshtml" />
+    <Content Include="Views\User\UpdateUserInfo.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -222,7 +225,6 @@
     <Folder Include="Content\img\imageGood\" />
     <Folder Include="JS\" />
     <Folder Include="Models\" />
-    <Folder Include="ViewModel\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />

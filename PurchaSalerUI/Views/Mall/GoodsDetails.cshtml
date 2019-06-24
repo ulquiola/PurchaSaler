@@ -192,8 +192,26 @@
                 <div class="jinru"><a href="/Goods/Shops?ShopID=1">进入店铺</a></div>
                 <div class="shoucang"><a>收藏店铺</a></div>
             </div>
-            </div>
+        </div>
     </div>
+</div>
+<div class="container">
+    <div class="right-main">
+        <figure class="tabBlock">
+            <ul class="tabBlock-tabs">
+                <li class="tabBlock-tab is-active">宝贝详情</li>
+                <li class="tabBlock-tab">累计评论(0)</li>
+            </ul>
+            <div class="tabBlock-content">
+                <div class="tabBlock-pane">
+                    <p>@ViewBag.Desc</p>
+                    <p><img src="@ViewBag.photo" /></p>
 
+                </div>
+                <div class="tabBlock-pane" id="GoodsCommentsPagedList">
+                </div>
+            </div>
+        </figure>
+    </div>
 </div>
     

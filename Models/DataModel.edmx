@@ -375,7 +375,7 @@
           <Property Name="Tel" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="Avatar" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Avatar" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="AdressInfoes" Relationship="Self.FK_AdressInfo_Users" FromRole="Users" ToRole="AdressInfo" />
           <NavigationProperty Name="GoodComments" Relationship="Self.FK_GoodComment_Users" FromRole="Users" ToRole="GoodComment" />
           <NavigationProperty Name="Orders" Relationship="Self.FK_Orders_Users" FromRole="Users" ToRole="Orders" />
